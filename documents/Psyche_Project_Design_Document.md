@@ -44,10 +44,10 @@
 
 ## 6. User Interface (UI) Design
 - **UI Mockups**: Include basic wireframes for:
-  - The drawing canvas.
-  - Hints and trivia display.
-  - Comparison results page.
-  - Age and weight calculator input and result screens.
+  - [The Drawing Page](https://github.com/MissionToPsyche-Iridium/iridium_23f_year_sim-byu-i/blob/main/documents/Drawing.png)
+  - [The Comparison Page](https://github.com/MissionToPsyche-Iridium/iridium_23f_year_sim-byu-i/blob/main/documents/comparisons.png)
+  - [The Home Page](https://github.com/MissionToPsyche-Iridium/iridium_23f_year_sim-byu-i/blob/main/documents/Home%20page.png)
+  - [The Trivia Page](https://github.com/MissionToPsyche-Iridium/iridium_23f_year_sim-byu-i/blob/main/documents/Trivia.png)
 - **User Interaction Flows**: How users will navigate between drawing, trivia, and calculators.
 
 ## 7. Development Plan
