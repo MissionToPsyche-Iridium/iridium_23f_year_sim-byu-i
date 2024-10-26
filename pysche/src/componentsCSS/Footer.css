@@ -1,0 +1,13 @@
+footer {
+    background-color: #333;
+    background-image: linear-gradient(to right, rgba(30, 29, 31, 0.384), rgb(49, 24, 187)); 
+    padding: 40px;
+    color: #4f0c7c;
+    text-align: center;
+    padding: 10px;
+    position:fixed;
+    bottom:0;
+    left: 0;
+    right:0;
+    height:30px;
+  }

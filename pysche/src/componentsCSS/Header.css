@@ -1,0 +1,28 @@
+header {
+    background-color: rgb(75, 56, 121);
+    background-image: linear-gradient(to right, rgba(165, 102, 201, 0.384) 0%, rgb(84, 82, 192) 100%);
+    padding: 20px;
+  }
+  
+  nav ul {
+    display: flex;
+    text-align: left;
+    list-style-type: none;
+  
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  
+  nav ul li:hover {
+    font-size: 18px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
