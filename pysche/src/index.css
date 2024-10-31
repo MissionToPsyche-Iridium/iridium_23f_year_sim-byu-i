@@ -11,3 +11,72 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
+/* Drawing Page and Canvas */
+.main-container {
+  display: flex;
+  align-items: stretch;
+  padding: 20px;
+}
+
+/* Toolbar Containes, Colors, Resizing,Clear, and Canvas Size */
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-right: 20px;
+  width: 120px;
+  border: solid;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.colorPalette {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.colorSwatch {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 20%;
+  cursor: pointer;
+}
+
+/* Brush Size Buttons */
+.brushCanvas {
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+  border-radius: 20%;
+
+}
+
+/* Clear Button */
+.clearButtonCanvas {
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 20%;
+}
+
+/* Canvas Resizer */
+.canvasSizeInput {
+  width: 50px;
+  margin-left: 5px;
+}
+/* Canvas Container */
+.canvas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Canvas */
+.canvas {
+  border: 2px solid #030000;
+  background-color: rgb(241, 236, 228);
+}
