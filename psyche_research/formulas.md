@@ -3,7 +3,7 @@
 1 year on Psyche is 1828 Earth days (~5 years)
 
 ### Formula using years
-Psyche Age = Earth Age * 5
+Psyche Age = Earth Age / 5
 
 ### Formula using days
 Psyche Age = (Earth Age * 365.25) / 1828
