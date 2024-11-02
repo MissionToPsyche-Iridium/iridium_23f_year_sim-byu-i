@@ -1,0 +1,37 @@
+:root {
+    /* Colors */
+    --mustard: #F99700;
+    --gold: #F3722D;
+    --coral: #EE4F5B;
+    --magenta: #9C3852;
+    --purple: #4F2248;
+    --dark-purple: #2A1E3C;
+
+    /* Greys */
+    --grey-5: #F1F1F2;
+    --grey-10: #E3E2E5;
+    --grey-25: #BCB8BF;
+    --grey-50: #7D7683;
+    --grey-75: #443A4B;
+    --grey-100: #13071B;
+
+    /* Backgrounds (Gradients) */
+    --mustard-gold: linear-gradient(45deg, #F99700, #F3722D);
+    --gold-coral: linear-gradient(45deg, #F3722D, #EE4F5B);
+    --coral-magenta: linear-gradient(45deg, #EE4F5B, #9C3852);
+    --magenta-purple: linear-gradient(45deg, #9C3852, #4F2248);
+    --purple-darkpurple: linear-gradient(45deg, #4F2248, #2A1E3C);
+    --darkpurple-black: linear-gradient(45deg, #2A1E3C, #000);
+
+    /* Fonts */
+    --display1: 3.6875rem 700 Helvetica, sans-serif;
+    --display2: 2.75rem 300 Helvetica, sans-serif;
+    --heading1: 2.75rem 700 Helvetica, sans-serif;
+    --heading2: 2.125rem 700 Helvetica, sans-serif;
+    --heading3: 1.5rem 700 Helvetica, sans-serif;
+    --heading4: 1.1875rem 700 Helvetica, sans-serif;
+    --heading5: 1rem 700 Helvetica, sans-serif;
+    --heading6: 0.8125rem 700 Helvetica, sans-serif;
+    --paragraph1: 1.375rem 400 Arial, sans-serif;
+    --body: 0.9375rem 400 Arial, sans-serif;
+}
