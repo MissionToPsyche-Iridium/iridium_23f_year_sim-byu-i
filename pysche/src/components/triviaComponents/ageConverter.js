@@ -1,5 +1,8 @@
 import React from "react";
+import { useState } from 'react';
 import "./../../componentsCSS/trivia.css"
+
+
 
 
 function AgeConverter() {
@@ -7,10 +10,24 @@ function AgeConverter() {
     const currentYear = new Date().getFullYear();
     const lastYear = 1900;
 
+
+
     const years = [];
 
-    for (let year = currentYear; year>= lastYear; --year){
+
+    const [month, setMonth] = useState("");
+
+
+    for (let year = currentYear; year >= lastYear; --year){
         years.push(year);
+    }
+
+    // function BirthMonth() {
+    //     const [month, setMonth] = useState("");
+    // }
+    function changeMonth(event){
+        setMonth(event.target.value)
+        console.log(setMonth)
     }
 
 
@@ -22,7 +39,7 @@ function AgeConverter() {
             
             <label for="userAge">Enter Your Birthday: </label>
             {/* <input type="text" id="userAge" name="userAge"></input> */}
-            <select name="month" id="months">
+            <select id="months" value={month} onChange={changeMonth}>
                 <option value="Month">Month</option>
                 <option value="Jan">January</option>
                 <option value="Feb">February</option>
@@ -86,5 +103,8 @@ function AgeConverter() {
         
     );
 }
+
+
+
 
 export default AgeConverter
