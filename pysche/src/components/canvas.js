@@ -12,26 +12,38 @@ function Canvas() {
   const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#794F32"];
   const brushSizes = [3, 5, 10];
 
-  const startDrawing = () => setIsDrawing(true);
-  const endDrawing = () => setIsDrawing(false);
-
-  const draw = (event) => {
-    if (!isDrawing || isFilling) return; // Prevent drawing in fill mode
-
+  const startDrawing = (event) => {
+    setIsDrawing(true);
+    
+    // Reset the path each time a new drawing starts
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    ctx.lineWidth = brushSize;
-    ctx.lineCap = "round";
-    ctx.strokeStyle = color;
-
+  
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
+  
+    ctx.beginPath();
+    ctx.moveTo(x, y); // Start the path at the current mouse position
+  };
+  const endDrawing = () => setIsDrawing(false);
 
+  const draw = (event) => {
+    if (!isDrawing || isFilling) return;
+  
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+  
+    ctx.lineWidth = brushSize;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = color;
+  
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+  
     ctx.lineTo(x, y);
     ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(x, y);
   };
 
   const clearCanvas = () => {
