@@ -56,6 +56,14 @@ code {
 
 }
 
+/* Fill Tool Button */
+.fillButton {
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 20%;
+}
+
 /* Clear Button */
 .clearButtonCanvas {
   padding: 5px 10px;
