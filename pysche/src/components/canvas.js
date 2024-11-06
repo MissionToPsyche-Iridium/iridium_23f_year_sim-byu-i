@@ -7,7 +7,8 @@ function Canvas() {
   const [brushSize, setBrushSize] = useState(2);
   const [canvasSize, setCanvasSize] = useState(500);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [isFilling, setIsFilling] = useState(false); // New state for fill mode
+  const [isFilling, setIsFilling] = useState(false);
+  const [isErasing, setIsErasing] = useState(false); // New state for eraser mode
 
   const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#794F32"];
   const brushSizes = [3, 5, 10];
@@ -15,33 +16,31 @@ function Canvas() {
   const startDrawing = (event) => {
     setIsDrawing(true);
     
-    // Reset the path each time a new drawing starts
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-  
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
   
     ctx.beginPath();
-    ctx.moveTo(x, y); // Start the path at the current mouse position
+    ctx.moveTo(x, y);
   };
   const endDrawing = () => setIsDrawing(false);
 
   const draw = (event) => {
     if (!isDrawing || isFilling) return;
-  
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-  
+
     ctx.lineWidth = brushSize;
     ctx.lineCap = "round";
-    ctx.strokeStyle = color;
-  
+    ctx.strokeStyle = isErasing ? "rgb(241, 236, 228)" : color; // Use white when erasing
+
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-  
+
     ctx.lineTo(x, y);
     ctx.stroke();
   };
@@ -55,11 +54,15 @@ function Canvas() {
   const resizeCanvas = (e) => {
     const newSize = parseInt(e.target.value, 10);
     setCanvasSize(newSize);
-    clearCanvas(); // Clear the canvas when resizing
+    clearCanvas();
   };
 
   const toggleFillMode = () => {
-    setIsFilling(!isFilling); // Toggle fill mode
+    setIsFilling(!isFilling);
+  };
+
+  const toggleEraser = () => {
+    setIsErasing(!isErasing);
   };
 
   const fillArea = (x, y, fillColor) => {
@@ -70,7 +73,7 @@ function Canvas() {
     const data = imageData.data;
 
     const targetColor = getPixelColor(data, x, y, canvas.width);
-    if (colorsMatch(targetColor, fillColor)) return; // Prevent filling the same color
+    if (colorsMatch(targetColor, fillColor)) return;
 
     const stack = [[x, y]];
 
@@ -80,7 +83,6 @@ function Canvas() {
 
       if (colorsMatch(getPixelColor(data, curX, curY, canvas.width), targetColor)) {
         setPixelColor(data, idx, fillColor);
-        
         stack.push([curX + 1, curY], [curX - 1, curY], [curX, curY + 1], [curX, curY - 1]);
       }
     }
@@ -107,7 +109,7 @@ function Canvas() {
     data[idx] = r;
     data[idx + 1] = g;
     data[idx + 2] = b;
-    data[idx + 3] = 255; // Set alpha to 255 (opaque)
+    data[idx + 3] = 255;
   };
 
   const colorsMatch = (color1, color2) => {
@@ -141,12 +143,16 @@ function Canvas() {
           ))}
         </div>
 
-        {/* Fill Tool Button */}
         <button className="fillButton" onClick={toggleFillMode}>
           {isFilling ? "Disable Fill" : "Enable Fill"}
         </button>
         
+        <button className="eraserButton" onClick={toggleEraser}>
+          {isErasing ? "Disable Eraser" : "Enable Eraser"}
+        </button>
+
         <button className="clearButtonCanvas" onClick={clearCanvas}>Clear</button>
+        
         <label>Canvas Size:</label>
         <input type="number" min="100" max="1000" step="50" value={canvasSize} onChange={resizeCanvas} className="canvasSizeInput" />
       </div>
