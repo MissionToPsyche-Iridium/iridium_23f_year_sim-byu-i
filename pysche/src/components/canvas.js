@@ -9,14 +9,13 @@ function Canvas() {
   const [isDrawing, setIsDrawing] = useState(false);
   const [isFilling, setIsFilling] = useState(false);
   const [isErasing, setIsErasing] = useState(false);
-  const [isSpraying, setIsSpraying] = useState(false); // New state for spray paint mode
+  const [isSpraying, setIsSpraying] = useState(false);
 
   const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#794F32"];
   const brushSizes = [3, 5, 10];
 
   const startDrawing = (event) => {
     setIsDrawing(true);
-
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const rect = canvas.getBoundingClientRect();
@@ -47,7 +46,6 @@ function Canvas() {
     ctx.stroke();
   };
 
-  // Spray paint function
   const sprayPaint = (event) => {
     if (!isDrawing || !isSpraying) return;
 
@@ -59,7 +57,7 @@ function Canvas() {
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 
-    const sprayDensity = 20; // Number of dots per spray
+    const sprayDensity = 20;
 
     for (let i = 0; i < sprayDensity; i++) {
       const offsetAngle = Math.random() * 2 * Math.PI;
@@ -67,7 +65,7 @@ function Canvas() {
       const sprayX = x + offsetRadius * Math.cos(offsetAngle);
       const sprayY = y + offsetRadius * Math.sin(offsetAngle);
 
-      ctx.fillRect(sprayX, sprayY, 1, 1); // Draw each dot as a 1x1 pixel rectangle
+      ctx.fillRect(sprayX, sprayY, 1, 1);
     }
   };
 
@@ -85,20 +83,76 @@ function Canvas() {
 
   const toggleFillMode = () => {
     setIsFilling(!isFilling);
-    setIsSpraying(false); // Disable spray mode if fill mode is active
+    setIsSpraying(false);
     setIsErasing(false);
   };
 
   const toggleEraser = () => {
     setIsErasing(!isErasing);
-    setIsSpraying(false); // Disable spray mode if eraser is active
+    setIsSpraying(false);
     setIsFilling(false);
   };
 
   const toggleSprayPaint = () => {
     setIsSpraying(!isSpraying);
-    setIsErasing(false); // Disable eraser mode if spray mode is active
+    setIsErasing(false);
     setIsFilling(false);
+  };
+
+  const handleCanvasClick = (event) => {
+    if (!isFilling) return;
+
+    const rect = canvasRef.current.getBoundingClientRect();
+    const x = Math.floor(event.clientX - rect.left);
+    const y = Math.floor(event.clientY - rect.top);
+
+    fillArea(x, y, hexToRgb(color));
+  };
+
+  const fillArea = (x, y, fillColor) => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+
+    const targetColor = getPixelColor(data, x, y, canvas.width);
+    if (colorsMatch(targetColor, fillColor)) return;
+
+    const stack = [[x, y]];
+
+    while (stack.length) {
+      const [curX, curY] = stack.pop();
+      const idx = (curY * canvas.width + curX) * 4;
+
+      if (colorsMatch(getPixelColor(data, curX, curY, canvas.width), targetColor)) {
+        setPixelColor(data, idx, fillColor);
+        stack.push([curX + 1, curY], [curX - 1, curY], [curX, curY + 1], [curX, curY - 1]);
+      }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+  };
+
+  const getPixelColor = (data, x, y, width) => {
+    const idx = (y * width + x) * 4;
+    return [data[idx], data[idx + 1], data[idx + 2], data[idx + 3]];
+  };
+
+  const setPixelColor = (data, idx, [r, g, b]) => {
+    data[idx] = r;
+    data[idx + 1] = g;
+    data[idx + 2] = b;
+    data[idx + 3] = 255;
+  };
+
+  const colorsMatch = (color1, color2) => {
+    return color1[0] === color2[0] && color1[1] === color2[1] && color1[2] === color2[2];
+  };
+
+  const hexToRgb = (hex) => {
+    const bigint = parseInt(hex.slice(1), 16);
+    return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
   };
 
   return (
@@ -148,7 +202,7 @@ function Canvas() {
           ref={canvasRef}
           width={canvasSize}
           height={canvasSize}
-          onMouseDown={(e) => { startDrawing(e); }}
+          onMouseDown={(e) => { isFilling ? handleCanvasClick(e) : startDrawing(e); }}
           onMouseUp={endDrawing}
           onMouseOut={endDrawing}
           onMouseMove={(e) => {
