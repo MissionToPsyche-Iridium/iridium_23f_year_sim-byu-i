@@ -72,6 +72,14 @@ code {
   border-radius: 20%;
 }
 
+/* Spray Paint Tool Button */
+.sprayButton {
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 20%;
+}
+
 /* Clear Button */
 .clearButtonCanvas {
   padding: 5px 10px;
