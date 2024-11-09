@@ -1,8 +1,10 @@
 import React from "react";
-import Canvas from "./canvas";
+import Canvas from "../components/canvas";
+import HintBox from "../components/hints";
 const DrawingPage = () => (
 <main>
     <Canvas />
+    <HintBox/>
 </main>
 )
 
