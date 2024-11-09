@@ -23,7 +23,7 @@ code {
 .toolbar {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 25px;
   margin-right: 20px;
   width: 120px;
   border: solid;
