@@ -1,9 +1,12 @@
 import React from "react";
 import BasicSwitch from "./weightSwitch.js";
-const TriviaPage = () => (
-<main>
-    <BasicSwitch />
-</main>
-)
+import WeightInput from "./weightInput.js";
 
-export default TriviaPage
+const TriviaPage = () => (
+  <main>
+    <WeightInput />
+    <BasicSwitch />
+  </main>
+);
+
+export default TriviaPage;
