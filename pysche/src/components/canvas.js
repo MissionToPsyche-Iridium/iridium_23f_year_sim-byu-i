@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import Tooltip from '@mui/material/Tooltip';
+
 import "../index.css";
 
 function Canvas() {
@@ -75,11 +77,11 @@ function Canvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
-  const resizeCanvas = (e) => {
-    const newSize = parseInt(e.target.value, 10);
-    setCanvasSize(newSize);
-    clearCanvas();
-  };
+  // const resizeCanvas = (e) => {
+  //   const newSize = parseInt(e.target.value, 10);
+  //   setCanvasSize(newSize);
+  //   clearCanvas();
+  // };
 
   const toggleFillMode = () => {
     setIsFilling(!isFilling);
@@ -170,29 +172,44 @@ function Canvas() {
           ))}
         </div>
         <div className="brushSizes">
-          {brushSizes.map((size) => (
-            <button className="brushCanvas" key={size} onClick={() => setBrushSize(size)}>
-              {size === 3 ? 'Small' : size === 5 ? 'Medium' : 'Large'}
+          {brushSizes.map((size, index) => (
+            <button
+              className={'brushCanvas' + index}
+              key={size}
+              onClick={() => setBrushSize(size)}
+            >
+              {/* {size === 3 ? 'Small' : size === 5 ? 'Medium' : 'Large'} */}
             </button>
           ))}
         </div>
+        <Tooltip title="Fill">
+          <button className="fillButton" onClick={toggleFillMode}>
+            {isFilling ? "Disable Fill" : "Enable Fill"}
+          </button>
+        </Tooltip>
 
-        <button className="fillButton" onClick={toggleFillMode}>
-          {isFilling ? "Disable Fill" : "Enable Fill"}
-        </button>
+        <Tooltip title="Eraser">
 
-        <button className="eraserButton" onClick={toggleEraser}>
-          {isErasing ? "Disable Eraser" : "Enable Eraser"}
-        </button>
+          <button className="eraserButton" onClick={toggleEraser}>
+            {isErasing ? "Disable Eraser" : "Enable Eraser"}
+          </button>
+        </Tooltip>
 
-        <button className="sprayButton" onClick={toggleSprayPaint}>
-          {isSpraying ? "Disable Spray" : "Enable Spray"}
-        </button>
+        <Tooltip title="Spray">
 
-        <button className="clearButtonCanvas" onClick={clearCanvas}>Clear</button>
+          <button className="sprayButton" onClick={toggleSprayPaint} >
+            {isSpraying ? "Disable Spray" : "Enable Spray"}
 
-        <label>Canvas Size:</label>
-        <input type="number" min="100" max="1000" step="50" value={canvasSize} onChange={resizeCanvas} className="canvasSizeInput" />
+          </button>
+        </Tooltip>
+
+        <Tooltip title="Clear">
+
+          <button className="clearButton" onClick={clearCanvas}>Clear</button>
+        </Tooltip>
+
+        {/* <label>Canvas Size:</label>
+        <input type="number" min="100" max="1000" step="50" value={canvasSize} onChange={resizeCanvas} className="canvasSizeInput" /> */}
       </div>
 
       <div className="canvas-container">
