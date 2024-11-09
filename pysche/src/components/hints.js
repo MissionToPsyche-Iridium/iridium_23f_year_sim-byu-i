@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import "../index.css"
 const hintArr = ["This is a hint", "This is a hint but different"]
 
 const HintBox = () => {
