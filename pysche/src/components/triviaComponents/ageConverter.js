@@ -12,9 +12,9 @@ function AgeConverter() {
 
     const years = [];
 
-    const thirtys = ["Apr", "Jun", "Sep", "Nov"];
+    // const thirtys = ["Apr", "Jun", "Sep", "Nov"];
 
-    const thirtyOnes = ["Jan", "Mar", "May", "Jul", "Aug", "Nov", "Dec"];
+    // const thirtyOnes = ["Jan", "Mar", "May", "Jul", "Aug", "Nov", "Dec"];
     
 
     // const daysInMonth = thirtyOnes.includes(selectedMonth) ? 31 : thirtys.includes(selectedMonth) ? 30;
