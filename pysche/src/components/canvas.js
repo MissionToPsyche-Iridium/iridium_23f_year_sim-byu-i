@@ -11,7 +11,7 @@ function Canvas() {
   const [isErasing, setIsErasing] = useState(false);
   const [isSpraying, setIsSpraying] = useState(false);
 
-  const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#794F32"];
+  const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#5E1616"];
   const brushSizes = [3, 5, 10];
 
   const startDrawing = (event) => {
