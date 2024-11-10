@@ -8,6 +8,10 @@ import "./../../componentsCSS/trivia.css"
 function AgeConverter() {
 
     const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth() + 1;
+    const currentDay = new Date().getDate();
+
+
     const lastYear = 1900;
 
     const years = [];
@@ -27,6 +31,7 @@ function AgeConverter() {
     
     const [selectedYear, setYear] = useState("");
     
+    const [earthAgeYears, submitAge] = useState("");
     
 
 
@@ -51,28 +56,37 @@ function AgeConverter() {
 
     }
 
-    
+    function setAge(){
+        const hadBDay = (currentMonth - Number(selectedMonth)) > 0 ? 1 : currentMonth === Number(selectedMonth) && currentDay - Number(selectedDay) >= 0 ? 1 : 0;
+        const ageInYears = (currentYear - Number(selectedYear)) - 1 + hadBDay;
+
+        submitAge(ageInYears);
+    }
+
+    // function calculateAge(day, month, year){
+    //     const earthAgeYears = currentYear - year;
+        
+    // }
 
     return (
     
      
         <div class="box">
-            
             <label for="userAge">Enter Your Birthday: </label>
             <select id="months" value={selectedMonth} onChange={changeMonth}>
                 <option value="Month">Month</option>
-                <option value="Jan">January</option>
-                <option value="Feb">February</option>
-                <option value="Mar">March</option>
-                <option value="Apr">April</option>
-                <option value="May">May</option>
-                <option value="Jun">June</option>
-                <option value="Jul">July</option>
-                <option value="Aug">August</option>
-                <option value="Sep">September</option>
-                <option value="Oct">October</option>
-                <option value="Nov">November</option>
-                <option value="Dec">December</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
             </select>
             {/* <p>Selected Month {selectedMonth}</p> */}
             {/* {daysInMonth} */}
@@ -91,9 +105,14 @@ function AgeConverter() {
                 ))}
             </select>
             {/* <p>Selected Day {selectedYear}</p> */}
-                
+            
+
+            <button onClick={setAge}>Submit</button>
+            {/* <button onClick={calculateAge(selectedDay, selectedMonth, selectedYear)}>Submit</button> */}
+
+            <p>You are {earthAgeYears} years old on Earth.</p>
+            
         </div>
-        
     );
 }
 
