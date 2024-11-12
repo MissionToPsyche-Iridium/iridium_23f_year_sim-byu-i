@@ -21,7 +21,12 @@
 ## Pictures and Why
 
 - [Large regions of rock and metal - Psyche asteroid illustration](https://psyche.asu.edu/gallery/large-regions-of-rock-and-metal-psyche-asteroid-illustration/)
+  - This illustration of Psyche shows the asteroid with large, distinct areas of metal and rock. If Psyche is separated into areas, or provinces, like this it may have experienced partial melting and separated the metals into layers. This could indicate that Psyche formed much like the core of a planet, which could help scientists learn more about how the Earth’s core was made. 
 - [Psyche asteroid](https://psyche.asu.edu/gallery/psyche-asteroid/)
+  - This illustration shows Psyche with small patches of rock and metal scattered around the surface. This scattered distribution of materials may indicate that Psyche is more “raw”, having not undergone intense heating. This can help scientists understand how planetesimals, or early planets, formed early in the Solar System. 
 - [Psyche](https://psyche.asu.edu/gallery/psyche/)
+  - This is the most classic illustration of Psyche. It shows the asteroids irregular shape as well as its metallic and rocky surface. The irregularity of Psyche and the metallic and rock makeup may indicate that the asteroid could be a remnant core of a planet in the early solar system. 
 - [Psyche close-up](https://psyche.asu.edu/gallery/psyche-close-up/)
+  - This illustration of Psyche emphasizes the uneven and rugged terrain created from the rock and metal that makes up the asteroid. Studying the craters, and tracing back the impacts, can help scientists understand the early solar system. 
 - [Artist's conception of the Psyche asteroid](https://psyche.asu.edu/gallery/artists-conception-of-the-psyche-asteroid/)
+  - This illustration of Psyche is more artistic, and shows the metals that make Psyche with a green tint. The different smooth and rocky areas may indicate how the asteroid cooled unevenly, pointing to Psyche having a possible pre-planet origin. This can help scientists learn more about how planet cores were formed. 
