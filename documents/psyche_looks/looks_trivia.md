@@ -30,3 +30,9 @@
   - This illustration of Psyche emphasizes the uneven and rugged terrain created from the rock and metal that makes up the asteroid. Studying the craters, and tracing back the impacts, can help scientists understand the early solar system. 
 - [Artist's conception of the Psyche asteroid](https://psyche.asu.edu/gallery/artists-conception-of-the-psyche-asteroid/)
   - This illustration of Psyche is more artistic, and shows the metals that make Psyche with a green tint. The different smooth and rocky areas may indicate how the asteroid cooled unevenly, pointing to Psyche having a possible pre-planet origin. This can help scientists learn more about how planet cores were formed. 
+
+---
+
+## Trivia Info
+
+- Trivia page stuff
