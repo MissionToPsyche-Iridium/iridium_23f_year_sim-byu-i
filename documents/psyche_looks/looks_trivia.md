@@ -43,4 +43,5 @@
   - Add Age calculator here?
 - The gravity on Psyche is 0.06 m/s^2, which is 1/160th of Earth’s gravity. (Double check this)
   - Add the weight calculator here?
+- The Psyche spacecraft will arrive in late July 2029 and begin observation of the asteroid.
 
