@@ -35,4 +35,12 @@
 
 ## Trivia Info
 
-- Trivia page stuff
+- Psyche was the 16th asteroid to be discovered. It was found in 1852 by an Italian astronomer Annibale de Gasparis. 
+- Psyche is very rich in metal, which is likely from the core of a planetesimal, one of the building blocks of the Solar System. 
+- Psyche is estimated to be 3,400 to 4,000 kg/m^3 and a surface area of 64,000 km^2
+- Psyche orbits the sun at an average of 3 astronomical units (AU), or about 448,793,612,100 meters. For reference Earth orbits at about 1 AU or 149,597,870,700 meters. 
+- A day on Psyche is about 4 hours and 12 minutes, while a year on Psyche lasts about 5 Earth years (about 1,828 Earth days)
+  - Add Age calculator here?
+- The gravity on Psyche is 0.06 m/s^2, which is 1/160th of Earth’s gravity. (Double check this)
+  - Add the weight calculator here?
+
