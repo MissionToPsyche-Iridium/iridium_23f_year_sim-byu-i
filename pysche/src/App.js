@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './components/layout';
 import DrawingPage from './components/drawingPage';
-import TriviaPage from './components/triviaComponents/triviaPage';
+import TriviaPage from './components/triviaPage';
 function App() {
   return (
 <Router>
