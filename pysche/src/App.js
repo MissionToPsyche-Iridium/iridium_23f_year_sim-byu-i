@@ -5,7 +5,6 @@ import Layout from './components/layout';
 import DrawingPage from './pages/drawingPage';
 import TriviaPage from './pages/triviaPage';
 import ExamplePage from './pages/examplePage';
-import TriviaPage from './components/triviaPage';
 function App() {
   return (
 <Router>
