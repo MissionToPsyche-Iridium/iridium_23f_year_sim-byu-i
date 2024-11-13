@@ -2,7 +2,9 @@ import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './components/layout';
-import DrawingPage from './components/drawingPage';
+import DrawingPage from './pages/drawingPage';
+import TriviaPage from './pages/triviaPage';
+import ExamplePage from './pages/examplePage';
 import TriviaPage from './components/triviaPage';
 function App() {
   return (
@@ -10,11 +12,13 @@ function App() {
   <Layout>
     <Routes>
       <Route path='/' elements = {<h1>Home Page</h1>} />
+      <Route path='/ExamplePage' element={<ExamplePage />} />
       <Route path="/Faq" element={<h1>FAQ</h1>} />
       <Route path="/DrawingPage" element={<DrawingPage />} />
       <Route path="/TriviaPage" element={<TriviaPage />} />
-      </Routes>
-    </Layout>
+      
+    </Routes>
+  </Layout>
 </Router>
   );
 }
