@@ -15,6 +15,7 @@ function App() {
       <Route path="/Faq" element={<h1>FAQ</h1>} />
       <Route path="/DrawingPage" element={<DrawingPage />} />
       <Route path="/TriviaPage" element={<TriviaPage />} />
+      
     </Routes>
   </Layout>
 </Router>
