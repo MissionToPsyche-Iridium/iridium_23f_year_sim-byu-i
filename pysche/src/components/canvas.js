@@ -12,6 +12,9 @@ function Canvas() {
   const [isFilling, setIsFilling] = useState(false);
   const [isErasing, setIsErasing] = useState(false);
   const [isSpraying, setIsSpraying] = useState(false);
+  const [isOval, setIsOval] = useState(false); // New state for the oval tool
+  const [startPoint, setStartPoint] = useState(null); // To store the starting point of the oval
+
 
   const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#5E1616"];
   const brushSizes = [3, 5, 10];
@@ -19,16 +22,26 @@ function Canvas() {
   const startDrawing = (event) => {
     setIsDrawing(true);
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-
-    ctx.beginPath();
-    ctx.moveTo(x, y);
+  
+    if (isOval) {
+      setStartPoint({ x, y }); // Store the start point for the oval
+    } else {
+      const ctx = canvas.getContext("2d");
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+    }
   };
 
-  const endDrawing = () => setIsDrawing(false);
+  const endDrawing = (event) => {
+    setIsDrawing(false);
+    if (isOval && startPoint) {
+      drawOval(event); // Draw the oval when ending the drawing
+    }
+    setStartPoint(null); // Reset the start point
+  };
 
   const draw = (event) => {
     if (!isDrawing || isFilling || isSpraying) return;
@@ -157,6 +170,34 @@ function Canvas() {
     return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
   };
 
+  const drawOval = (event) => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    const rect = canvas.getBoundingClientRect();
+  
+    const endX = event.clientX - rect.left;
+    const endY = event.clientY - rect.top;
+    const { x: startX, y: startY } = startPoint;
+  
+    const centerX = (startX + endX) / 2;
+    const centerY = (startY + endY) / 2;
+    const radiusX = Math.abs(endX - startX) / 2;
+    const radiusY = Math.abs(endY - startY) / 2;
+  
+    ctx.beginPath();
+    ctx.ellipse(centerX, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = brushSize;
+    ctx.stroke();
+  };
+
+  const toggleOvalTool = () => {
+    setIsOval(!isOval);
+    setIsSpraying(false);
+    setIsErasing(false);
+    setIsFilling(false);
+  };
+
   return (
     <div className="main-container">
       <div className="toolbar">
@@ -203,6 +244,13 @@ function Canvas() {
           </button>
         </Tooltip>
 
+        <Tooltip title="Oval">
+          <button className="ovalButton" onClick={toggleOvalTool}>
+            {isOval ? "Disable Oval" : "Enable Oval"}
+          </button>
+        </Tooltip>
+
+
         <Tooltip title="Clear">
 
           <button className="clearButton" onClick={clearCanvas}>Clear</button>
@@ -223,7 +271,8 @@ function Canvas() {
           onMouseUp={endDrawing}
           onMouseOut={endDrawing}
           onMouseMove={(e) => {
-            isSpraying ? sprayPaint(e) : draw(e);
+            if (isSpraying) sprayPaint(e);
+            else if (!isOval) draw(e);
           }}
         />
       </div>
