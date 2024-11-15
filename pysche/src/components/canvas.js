@@ -14,6 +14,8 @@ function Canvas() {
   const [isSpraying, setIsSpraying] = useState(false);
   const [isOval, setIsOval] = useState(false); // New state for the oval tool
   const [startPoint, setStartPoint] = useState(null); // To store the starting point of the oval
+  const [history, setHistory] = useState([]); // To track canvas history
+  const [redoStack, setRedoStack] = useState([]); // To track redo history
 
 
   const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#5E1616"];
@@ -37,11 +39,18 @@ function Canvas() {
 
   const endDrawing = (event) => {
     setIsDrawing(false);
+  
     if (isOval && startPoint) {
-      drawOval(event); // Draw the oval when ending the drawing
+      drawOval(event); // Draw the oval
     }
-    setStartPoint(null); // Reset the start point
+    
+    if (isDrawing && !isOval) {
+      // Save state after freehand drawing
+      saveCanvasState();
+    }
+    setStartPoint(null); // Reset start point
   };
+  
 
   const draw = (event) => {
     if (!isDrawing || isFilling || isSpraying) return;
@@ -63,32 +72,36 @@ function Canvas() {
 
   const sprayPaint = (event) => {
     if (!isDrawing || !isSpraying) return;
-
+  
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = color;
-
+  
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-
+  
     const sprayDensity = 20;
-
+  
     for (let i = 0; i < sprayDensity; i++) {
       const offsetAngle = Math.random() * 2 * Math.PI;
       const offsetRadius = Math.random() * brushSize;
       const sprayX = x + offsetRadius * Math.cos(offsetAngle);
       const sprayY = y + offsetRadius * Math.sin(offsetAngle);
-
+  
       ctx.fillRect(sprayX, sprayY, 1, 1);
     }
+  
+    saveCanvasState(); // Save state after spraying
   };
+  
 
   const clearCanvas = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-  };
+    saveCanvasState(); // Save the cleared state
+  };  
 
   // const resizeCanvas = (e) => {
   //   const newSize = parseInt(e.target.value, 10);
@@ -198,6 +211,51 @@ function Canvas() {
     setIsFilling(false);
   };
 
+  const saveCanvasState = () => {
+    const canvas = canvasRef.current;
+    const currentState = canvas.toDataURL(); // Get current canvas as a data URL
+    setHistory((prev) => [...prev, currentState]); // Save state to history
+    setRedoStack([]); // Clear redo stack when new changes occur
+  };
+  
+  const undo = () => {
+    if (history.length === 0) return; // Nothing to undo
+    
+    const lastState = history.pop(); // Get the last saved state
+    setRedoStack((prev) => [lastState, ...prev]); // Add it to redo stack
+    setHistory([...history]); // Update history
+  
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    
+    // Restore previous state or clear if none
+    const previousState = history[history.length - 1] || "";
+    img.src = previousState;
+    img.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+      if (previousState) ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+  };
+  
+  const redo = () => {
+    if (redoStack.length === 0) return; // Nothing to redo
+  
+    const nextState = redoStack.shift(); // Get the next state
+    setHistory((prev) => [...prev, nextState]); // Add it back to history
+    setRedoStack([...redoStack]); // Update redo stack
+  
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    
+    img.src = nextState; // Use the redo state
+    img.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+  };
+  
   return (
     <div className="main-container">
       <div className="toolbar">
@@ -249,6 +307,15 @@ function Canvas() {
             {isOval ? "Disable Oval" : "Enable Oval"}
           </button>
         </Tooltip>
+
+        <Tooltip title="Undo">
+          <button className="undoButton" onClick={undo}>Undo</button>
+        </Tooltip>
+
+        <Tooltip title="Redo">
+          <button className="redoButton" onClick={redo}>Redo</button>
+        </Tooltip>
+
 
 
         <Tooltip title="Clear">
