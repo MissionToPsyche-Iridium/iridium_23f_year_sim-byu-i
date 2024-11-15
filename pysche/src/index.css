@@ -107,6 +107,12 @@ code {
   margin-left: 10px;
   border-radius: 20%;
 }
+.ovalButton {
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 20%;
+}
 .clearButton {
   padding: 5px 10px;
   cursor: pointer;
