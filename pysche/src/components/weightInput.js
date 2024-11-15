@@ -1,20 +1,21 @@
 import React from "react";
+import { TextField } from "@mui/material";
 
-
-export default function WeightInput({ weight, isKg, onChange }) {
+function WeightInput({ weight, isKg, onChange  }) {
     return (
-        <div>
-            <label htmlFor='weight-input'>Enter your weight:</label>
-            <input 
-                id='weight-input'
-                type='number'
-                value ={weight}
-                onChange={(e) => onChange(e.target.value)}
-                min='0'
-                step='0.1'
-                // will have to add logic to check if switch for kg is on and change the placeholder accordingly
-                placeholder={`Weight in ${isKg ? 'kg' : 'lb'}`}
-            />
-        </div>
+        <TextField 
+            fullWidth
+            id="weight-input"
+            label="Enter your weight"
+            type="number"
+            placeholder={`Weight in ${isKg ? 'kg' : 'lb'}`}
+            value={weight}
+            onChange={(e) => onChange(e.target.value)}
+            margin="normal"
+            variant="standard"
+            InputLabelProps={{ shrink: true, }}
+        />
     );
 }
+
+export default WeightInput;

@@ -1,12 +1,12 @@
 import React from "react";
 // import BasicSwitch from "../../weightSwitch.js";
 import WeightInput from "../components/weightInput.js";
-import BasicSwitch from "../components/weightSwitch.js"
+import UnitSwitch from "../components/unitSwitch.js"
 
 const TriviaPage = () => (
   <main>
     <WeightInput />
-    <BasicSwitch />
+    <UnitSwitch />
   </main>
 );
 
