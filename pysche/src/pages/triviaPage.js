@@ -1,7 +1,7 @@
 import React from "react";
 // import BasicSwitch from "../../weightSwitch.js";
 import WeightInput from "../components/weightInput.js";
-import BasicSwitch from "../components/weightSwitch.js"
+import UnitSwitch from "../components/unitSwitch.js"
 import AgeConverter from "../components/ageConverter";
 import FunFacts from "../components/funFacts";
 import PsycheCost from "../components/psycheCost";
@@ -12,7 +12,7 @@ const TriviaPage = () => (
     <AgeConverter />
     <br></br>
     <WeightInput />
-    <BasicSwitch />
+    <UnitSwitch />
     <br></br>
     <FunFacts />
     <br></br>
