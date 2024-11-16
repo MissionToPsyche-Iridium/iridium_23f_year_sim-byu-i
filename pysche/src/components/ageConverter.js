@@ -63,10 +63,29 @@ function AgeConverter() {
         submitAge(ageInYears);
     }
 
-    // function calculateAge(day, month, year){
-    //     const earthAgeYears = currentYear - year;
-        
-    // }
+    function numOfLeaps(){
+        const arrayYears = [];
+
+        let indexYears = selectedYear;
+
+
+        while (indexYears !== currentYear) {
+            arrayYears.push(indexYears);
+        }
+
+        let numDays = 0;
+
+        for (let i = 0; i < arrayYears.length; i++) {
+            let isLeap = leapYear(arrayYears[i]);
+
+            if (isLeap === 29) {
+                numDays += 1;
+            };
+            
+        }
+
+        return (numDays);
+    }
 
     return (
     
@@ -111,6 +130,7 @@ function AgeConverter() {
             {/* <button onClick={calculateAge(selectedDay, selectedMonth, selectedYear)}>Submit</button> */}
 
             <p>You are {earthAgeYears} years old on Earth.</p>
+            <p>You are {earthAgeYears + numOfLeaps()} years old on Earth.</p>
             
         </div>
     );
