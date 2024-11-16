@@ -34,7 +34,6 @@ function AgeConverter() {
     const [earthAgeYears, submitAge] = useState("");
     
 
-
     function leapYear(year){
         // console.log(year)
         return(year % 400 === 0 ? 29 : year % 100 === 0 ? 28 : year % 4 === 0 ? 29 : 28)
@@ -63,14 +62,31 @@ function AgeConverter() {
         submitAge(ageInYears);
     }
 
+    function setAgeInDays(){
+
+        const daysInMonths = [31,28,31,30,31,30,31,31,30,31,30,31]
+        let days = 0
+
+        for (let i = 0; i < Number(currentMonth) - 1; i++) {
+            days += daysInMonths[i];
+            
+        }
+
+        const daysOld = earthAgeYears * 365 + numOfLeaps() + currentDay; 
+
+        return (daysOld)
+    }
+
     function numOfLeaps(){
         const arrayYears = [];
 
-        let indexYears = selectedYear;
+        let indexYears = Number(selectedYear);
 
 
         while (indexYears !== currentYear) {
             arrayYears.push(indexYears);
+
+            indexYears++;
         }
 
         let numDays = 0;
@@ -118,7 +134,7 @@ function AgeConverter() {
             
         
             <select id="years" value={selectedYear} onChange={changeYear}>
-                <option>Year</option>
+                <option value="1">Year</option>
                 {years.map((year) => (
                     <option value={year}> {year} </option>
                 ))}
@@ -126,11 +142,12 @@ function AgeConverter() {
             {/* <p>Selected Day {selectedYear}</p> */}
             
 
+            {/* <button onClick={() => {setAge(); setAgeInDays();}}>Submit</button> */}
             <button onClick={setAge}>Submit</button>
             {/* <button onClick={calculateAge(selectedDay, selectedMonth, selectedYear)}>Submit</button> */}
 
             <p>You are {earthAgeYears} years old on Earth.</p>
-            <p>You are {earthAgeYears + numOfLeaps()} years old on Earth.</p>
+            <p>You are {setAgeInDays()} days old on Earth.</p>
             
         </div>
     );
