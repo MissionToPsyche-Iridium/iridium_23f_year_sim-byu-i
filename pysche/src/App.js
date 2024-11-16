@@ -5,17 +5,18 @@ import Layout from './components/layout';
 import DrawingPage from './pages/drawingPage';
 import TriviaPage from './pages/triviaPage';
 import ExamplePage from './pages/examplePage';
+import CreditsPage from './pages/creditsPage';
+import HomePage from './pages/homePage';
 function App() {
   return (
 <Router>
   <Layout>
     <Routes>
-      <Route path='/' elements = {<h1>Home Page</h1>} />
-      <Route path='/ExamplePage' element={<ExamplePage />} />
-      <Route path="/Faq" element={<h1>FAQ</h1>} />
-      <Route path="/DrawingPage" element={<DrawingPage />} />
-      <Route path="/TriviaPage" element={<TriviaPage />} />
-      
+      <Route path='/' element= {<HomePage />} />
+      <Route path='/Example' element={<ExamplePage />} />
+      <Route path="/Drawing" element={<DrawingPage />} />
+      <Route path="/Trivia" element={<TriviaPage />} />
+      <Route path="/Credits" element={<CreditsPage />} />
     </Routes>
   </Layout>
 </Router>
@@ -23,4 +24,3 @@ function App() {
 }
 
 export default App;
-// Change the routes for home page and faq into actual react pages instead of <h1>....
