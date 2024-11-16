@@ -16,9 +16,9 @@ function AgeConverter() {
 
     const years = [];
 
-    const thirties = ["Apr", "Jun", "Sep", "Nov"];
+    const thirties = ["4", "6", "9", "11"];
 
-    const thirtyOnes = ["Jan", "Mar", "May", "Jul", "Aug", "Nov", "Dec"];
+    const thirtyOnes = ["1", "3", "5", "7", "8", "10", "12"];
     
 
     for (let year = currentYear; year >= lastYear; --year){
@@ -33,7 +33,6 @@ function AgeConverter() {
     
     const [earthAgeYears, submitAge] = useState("");
     
-
 
     function leapYear(year){
         // console.log(year)
@@ -63,10 +62,53 @@ function AgeConverter() {
         submitAge(ageInYears);
     }
 
-    // function calculateAge(day, month, year){
-    //     const earthAgeYears = currentYear - year;
-        
-    // }
+    function setAgeInDays(){
+
+        const daysInMonths = [31,28,31,30,31,30,31,31,30,31,30,31]
+        let days = 0
+
+        for (let i = selectedMonth; i < Number(currentMonth); i++) {
+            days += daysInMonths[i];
+            
+        }
+
+        //numOfLeaps calculates the number of leap days that has past, you need the current day so that you don't miss the days that have past in the month already, then we need to account for the day the person was born so we subtract that from the current months day but we also need to subtract on from the selected day because we are counting the day you were born as day number 1, then we add the calculated number of days from the months that had past.
+        const daysOld = earthAgeYears * 365 + numOfLeaps() + currentDay - (selectedDay - 1) + days; 
+
+        return (daysOld)
+    }
+
+    function numOfLeaps(){
+        const arrayYears = [];
+
+        let indexYears = Number(selectedYear);
+
+        // Does not include the current year this is important otherwise it may count a leap day (the 29th) that has not happened yet.
+        while (indexYears !== currentYear) {
+            arrayYears.push(indexYears);
+
+            indexYears++;
+        }
+
+        let numDays = 0;
+
+        for (let i = 0; i < arrayYears.length; i++) {
+            let isLeap = leapYear(arrayYears[i]);
+
+            if (isLeap === 29) {
+                numDays += 1;
+            };
+            
+        }
+
+        //This account for if the current year is a leap year and the day has past or it is the 29th.
+        if ((leapYear(currentYear) === 29 && Number(selectedMonth) > 2) || (leapYear(currentYear) === 29 && Number(selectedMonth) === 2 && Number(selectedDay) === 29)) {
+            numDays += 1;
+        }
+      
+
+        return (numDays);
+    }
 
     return (
     
@@ -99,7 +141,7 @@ function AgeConverter() {
             
         
             <select id="years" value={selectedYear} onChange={changeYear}>
-                <option>Year</option>
+                <option value={1}>Year</option>
                 {years.map((year) => (
                     <option value={year}> {year} </option>
                 ))}
@@ -108,9 +150,9 @@ function AgeConverter() {
             
 
             <button onClick={setAge}>Submit</button>
-            {/* <button onClick={calculateAge(selectedDay, selectedMonth, selectedYear)}>Submit</button> */}
 
-            <p>You are {earthAgeYears} years old on Earth.</p>
+            <p>You are {earthAgeYears} years old on Earth and {earthAgeYears/5} years old on Psyche.</p>
+            <p>You are {setAgeInDays()} days old on Earth and {earthAgeYears*1828} days old on Psyche.</p>
             
         </div>
     );
