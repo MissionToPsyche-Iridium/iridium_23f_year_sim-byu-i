@@ -1,29 +1,40 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import Tooltip from '@mui/material/Tooltip';
 import "../index.css"
-const hintArr = ["This is a hint", "This is a hint but different"]
-// ## Hints
-
-// - **Psyche** is a mixture of rock and metal, with the metal taking up about 30-60% of its composition.
-// - **Psyche** is shaped like an irregular and lumpy potato.
-// - **Psyche** is about 173 miles (280 kilometers) at its widest point.
-// - **Psyche** has two depressions or craters on it that are about 67 km wide.
-// - **Psyche** is most likely relatively smooth.
-
+const hints = [
+  "Psyche is a mixture of rock and metal, with the metal taking up about 30-60% of its composition.",
+  "Psyche is shaped like an irregular and lumpy potato.",
+  "Psyche is about 173 miles (280 kilometers) at its widest point.",
+  "Psyche has two depressions or craters on it that are about 67 km wide.",
+  "Psyche is most likely relatively smooth."
+];
+//TODO: Make words stay in set size box without expanding it
 const HintBox = () => {
-    const [hintNumber, setHintNumber] = useState(0);
+  const [hintNumber, setHintNumber] = useState(0);
 
-    const handleHintClick = () => {
-        setHintNumber(hintNumber >= hintArr.length - 1?0 : hintNumber + 1);
-    
-};
-return (
+  const handlePrev = () => {
+    setHintNumber(Math.max(0, hintNumber - 1));
+  };
+
+  const handleNext = () => {
+    setHintNumber(Math.min(hints.length - 1, hintNumber + 1));
+  };
+
+  return (
     <div className="hintBox">
       <div className="hintBoxWords">
-        <p>Your hint is: {hintArr[hintNumber]}</p>
-        <button onClick={handleHintClick}>Hint</button>
+        <p>Hint: {hints[hintNumber]}</p>
+        <div>
+          <Tooltip open={hintNumber === 0} title="First Hint">
+            <button onClick={handlePrev}>Prev</button>
+          </Tooltip>
+          <Tooltip open={hintNumber === hints.length - 1} title="Last Hint">
+            <button onClick={handleNext}>Next</button>
+          </Tooltip>
+        </div>
       </div>
     </div>
   );
 };
 
-export default HintBox
+export default HintBox;
