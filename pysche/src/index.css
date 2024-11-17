@@ -1,68 +1,60 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
 /* Drawing Page and Canvas */
 .main-container {
   display: flex;
-  align-items: stretch;
   padding: 20px;
+  gap: 30px;
 }
-
-/* Toolbar Containes, Colors, Resizing,Clear, and Canvas Size */
+/* Toolbar Containers, Colors, Resizing,Clear, and Canvas Size */
 .toolbar {
+  position: relative;
+  margin-top: 120px;  /* Increased from 10px to move toolbar down */
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-right: 20px;
-  width: 120px;
+  width: 150px;
   border: solid;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 10px;
+  padding: 20px;
+  text-align: center;
+  background-color: #F1F1F2;
+  border-radius: 8px;
+  height: fit-content;
 }
 
 .colorPalette {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  padding-left: 20%;
-
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  justify-content: center;
+  padding: 10px;
 }
 
 .colorSwatch {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border: 1px solid black;
   border-radius: 20%;
   cursor: pointer;
 }
 
-/* Brush Size Buttons */
-.brushSizes {
-  /* display: grid;
-  flex-direction: column; */
-  /* margin-right: 20px; */
-  padding-left: 20%;
+.colorSwatch:hover {
+  transform: scale(1.1);
 }
 
-/* Medium brush */
+/* Brush CSS */
+.brushSizes {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  padding: 10px ;
+  padding-left: 30px;
+}
+
+/* Small brush */
 .brushCanvas0 {
   width: 15px;
   height: 15px;
-  border: 1px solid black;
-  background-color:   #F3722D;;
+  border: 2px solid black;
+  background-color: #F3722D;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -71,9 +63,8 @@ code {
 .brushCanvas1 {
   width: 20px;
   height: 20px;
-  border: 1px solid black;
-  background-color:   #F3722D;;
-
+  border: 2px solid black;
+  background-color: #F3722D;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -82,92 +73,69 @@ code {
 .brushCanvas2 {
   width: 30px;
   height: 30px;
-  border: 1px solid black;
-  background-color:   #F3722D;;
-
+  border: 2px solid black;
+  background-color: #F3722D;
   border-radius: 50%;
   cursor: pointer;
 }
-/* Buttons on Draw Page */
-.fillButton {
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 20%;
-}
-.eraserButton {
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 20%;
-}
-.sprayButton {
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 20%;
-}
-.ovalButton {
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 20%;
-}
-.undoButton {
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 20%;
-}
-.redoButton {
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 20%;
-}
-.clearButton {
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 20%;
+
+.brushCanvas0:hover,
+.brushCanvas1:hover,
+.brushCanvas2:hover {
+  transform: scale(1.1);
 }
 
-/* Canvas Resizer */
-.canvasSizeInput {
-  width: 50px;
-  margin-left: 5px;
+/* Buttons on Draw Page */
+.brushOptions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 10px;
 }
-/* Canvas Container */
+
+.canvasButton {
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #E3E2E5;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.canvasButton:hover {
+  background-color: #F3722D;
+  color: white;
+}
+
 .canvas-container {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 20px;
 }
-/* Canvas */
+
 .canvas {
   border: 2px solid #030000;
   background-color: rgb(241, 236, 228);
+  border-radius: 10%;
 }
 
-.hintBox{
+/* Hint CSS */
+.hintBox {
   border: 2px solid #030000;
   background-color: rgb(241, 236, 228);
-  /* padding-bottom: 10px; */
-  /* padding-left: 10px; */
-  padding-right: 10px;
-  padding-top: 10px;
-  }
-  
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: auto;
+}
+
 /* 
 .hintBoxWords{
 
 } */
-  
-
-
 
 /* Home CSS Styling */
-/* Main container */
 .home-container {
   width: auto;
   height: 1024px;

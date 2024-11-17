@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Tooltip from '@mui/material/Tooltip';
+import HintBox from "../components/hints";
 
 import "../index.css";
 
@@ -7,7 +8,8 @@ function Canvas() {
   const canvasRef = useRef(null);
   const [color, setColor] = useState("#000000");
   const [brushSize, setBrushSize] = useState(2);
-  const [canvasSize, setCanvasSize] = useState(500);
+  //TODO: Find away so the canvas automatically changes with the screen. 
+  const [canvasSize, setCanvasSize] = useState(600);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isFilling, setIsFilling] = useState(false);
   const [isErasing, setIsErasing] = useState(false);
@@ -27,7 +29,7 @@ function Canvas() {
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-  
+
     if (isOval) {
       setStartPoint({ x, y }); // Store the start point for the oval
     } else {
@@ -39,18 +41,18 @@ function Canvas() {
 
   const endDrawing = (event) => {
     setIsDrawing(false);
-  
+
     if (isOval && startPoint) {
       drawOval(event); // Draw the oval
     }
-    
+
     if (isDrawing && !isOval) {
       // Save state after freehand drawing
       saveCanvasState();
     }
     setStartPoint(null); // Reset start point
   };
-  
+
 
   const draw = (event) => {
     if (!isDrawing || isFilling || isSpraying) return;
@@ -72,36 +74,36 @@ function Canvas() {
 
   const sprayPaint = (event) => {
     if (!isDrawing || !isSpraying) return;
-  
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = color;
-  
+
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-  
+
     const sprayDensity = 20;
-  
+
     for (let i = 0; i < sprayDensity; i++) {
       const offsetAngle = Math.random() * 2 * Math.PI;
       const offsetRadius = Math.random() * brushSize;
       const sprayX = x + offsetRadius * Math.cos(offsetAngle);
       const sprayY = y + offsetRadius * Math.sin(offsetAngle);
-  
+
       ctx.fillRect(sprayX, sprayY, 1, 1);
     }
-  
+
     saveCanvasState(); // Save state after spraying
   };
-  
+
 
   const clearCanvas = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     saveCanvasState(); // Save the cleared state
-  };  
+  };
 
   // const resizeCanvas = (e) => {
   //   const newSize = parseInt(e.target.value, 10);
@@ -187,16 +189,16 @@ function Canvas() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const rect = canvas.getBoundingClientRect();
-  
+
     const endX = event.clientX - rect.left;
     const endY = event.clientY - rect.top;
     const { x: startX, y: startY } = startPoint;
-  
+
     const centerX = (startX + endX) / 2;
     const centerY = (startY + endY) / 2;
     const radiusX = Math.abs(endX - startX) / 2;
     const radiusY = Math.abs(endY - startY) / 2;
-  
+
     ctx.beginPath();
     ctx.ellipse(centerX, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
     ctx.strokeStyle = color;
@@ -217,18 +219,18 @@ function Canvas() {
     setHistory((prev) => [...prev, currentState]); // Save state to history
     setRedoStack([]); // Clear redo stack when new changes occur
   };
-  
+
   const undo = () => {
     if (history.length === 0) return; // Nothing to undo
-    
+
     const lastState = history.pop(); // Get the last saved state
     setRedoStack((prev) => [lastState, ...prev]); // Add it to redo stack
     setHistory([...history]); // Update history
-  
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const img = new Image();
-    
+
     // Restore previous state or clear if none
     const previousState = history[history.length - 1] || "";
     img.src = previousState;
@@ -237,25 +239,25 @@ function Canvas() {
       if (previousState) ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     };
   };
-  
+
   const redo = () => {
     if (redoStack.length === 0) return; // Nothing to redo
-  
+
     const nextState = redoStack.shift(); // Get the next state
     setHistory((prev) => [...prev, nextState]); // Add it back to history
     setRedoStack([...redoStack]); // Update redo stack
-  
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const img = new Image();
-    
+
     img.src = nextState; // Use the redo state
     img.onload = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     };
   };
-  
+
   return (
     <div className="main-container">
       <div className="toolbar">
@@ -277,56 +279,47 @@ function Canvas() {
               key={size}
               onClick={() => setBrushSize(size)}
             >
-              {/* {size === 3 ? 'Small' : size === 5 ? 'Medium' : 'Large'} */}
             </button>
           ))}
         </div>
-        <Tooltip title="Fill">
-          <button className="fillButton" onClick={toggleFillMode}>
-            {isFilling ? "Disable Fill" : "Enable Fill"}
-          </button>
-        </Tooltip>
+        <div className='brushOptions'>
+          <Tooltip title="Fill">
+            <button className="canvasButton" onClick={toggleFillMode}>
+              {isFilling ? "Disable Fill" : "Enable Fill"}
+            </button>
+          </Tooltip>
 
-        <Tooltip title="Eraser">
+          <Tooltip title="Eraser">
+            <button className="canvasButton" onClick={toggleEraser}>
+              {isErasing ? "Disable Eraser" : "Enable Eraser"}
+            </button>
+          </Tooltip>
 
-          <button className="eraserButton" onClick={toggleEraser}>
-            {isErasing ? "Disable Eraser" : "Enable Eraser"}
-          </button>
-        </Tooltip>
+          <Tooltip title="Spray">
+            <button className="canvasButton" onClick={toggleSprayPaint}>
+              {isSpraying ? "Disable Spray" : "Enable Spray"}
+            </button>
+          </Tooltip>
 
-        <Tooltip title="Spray">
+          <Tooltip title="Oval">
+            <button className="canvasButton" onClick={toggleOvalTool}>
+              {isOval ? "Disable Oval" : "Enable Oval"}
+            </button>
+          </Tooltip>
 
-          <button className="sprayButton" onClick={toggleSprayPaint} >
-            {isSpraying ? "Disable Spray" : "Enable Spray"}
+          <Tooltip title="Undo">
+            <button className="canvasButton" onClick={undo}>Undo</button>
+          </Tooltip>
 
-          </button>
-        </Tooltip>
+          <Tooltip title="Redo">
+            <button className="canvasButton" onClick={redo}>Redo</button>
+          </Tooltip>
 
-        <Tooltip title="Oval">
-          <button className="ovalButton" onClick={toggleOvalTool}>
-            {isOval ? "Disable Oval" : "Enable Oval"}
-          </button>
-        </Tooltip>
-
-        <Tooltip title="Undo">
-          <button className="undoButton" onClick={undo}>Undo</button>
-        </Tooltip>
-
-        <Tooltip title="Redo">
-          <button className="redoButton" onClick={redo}>Redo</button>
-        </Tooltip>
-
-
-
-        <Tooltip title="Clear">
-
-          <button className="clearButton" onClick={clearCanvas}>Clear</button>
-        </Tooltip>
-
-        {/* <label>Canvas Size:</label>
-        <input type="number" min="100" max="1000" step="50" value={canvasSize} onChange={resizeCanvas} className="canvasSizeInput" /> */}
+          <Tooltip title="Clear">
+            <button className="canvasButton" onClick={clearCanvas}>Clear</button>
+          </Tooltip>
+        </div>
       </div>
-
       <div className="canvas-container">
         <h2>Whiteboard</h2>
         <canvas
@@ -342,6 +335,10 @@ function Canvas() {
             else if (!isOval) draw(e);
           }}
         />
+        <div>
+        <HintBox/>
+
+        </div>
       </div>
     </div>
   );
