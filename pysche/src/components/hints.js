@@ -1,6 +1,13 @@
 import React, {useState} from "react";
 import "../index.css"
 const hintArr = ["This is a hint", "This is a hint but different"]
+// ## Hints
+
+// - **Psyche** is a mixture of rock and metal, with the metal taking up about 30-60% of its composition.
+// - **Psyche** is shaped like an irregular and lumpy potato.
+// - **Psyche** is about 173 miles (280 kilometers) at its widest point.
+// - **Psyche** has two depressions or craters on it that are about 67 km wide.
+// - **Psyche** is most likely relatively smooth.
 
 const HintBox = () => {
     const [hintNumber, setHintNumber] = useState(0);

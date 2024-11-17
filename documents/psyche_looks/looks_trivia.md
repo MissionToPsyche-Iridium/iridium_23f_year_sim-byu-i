@@ -25,7 +25,7 @@
 - [Psyche asteroid](https://psyche.asu.edu/gallery/psyche-asteroid/)
   - This illustration shows Psyche with small patches of rock and metal scattered around the surface. This scattered distribution of materials may indicate that Psyche is more “raw”, having not undergone intense heating. This can help scientists understand how planetesimals, or early planets, formed early in the Solar System. 
 - [Psyche](https://psyche.asu.edu/gallery/psyche/)
-  - This is the most classic illustration of Psyche. It shows the asteroids irregular shape as well as its metallic and rocky surface. The irregularity of Psyche and the metallic and rock makeup may indicate that the asteroid could be a remnant core of a planet in the early solar system. 
+  - (THIS ONE FIRST)This is the most classic illustration of Psyche. It shows the asteroids irregular shape as well as its metallic and rocky surface. The irregularity of Psyche and the metallic and rock makeup may indicate that the asteroid could be a remnant core of a planet in the early solar system. 
 - [Psyche close-up](https://psyche.asu.edu/gallery/psyche-close-up/)
   - This illustration of Psyche emphasizes the uneven and rugged terrain created from the rock and metal that makes up the asteroid. Studying the craters, and tracing back the impacts, can help scientists understand the early solar system. 
 - [Artist's conception of the Psyche asteroid](https://psyche.asu.edu/gallery/artists-conception-of-the-psyche-asteroid/)

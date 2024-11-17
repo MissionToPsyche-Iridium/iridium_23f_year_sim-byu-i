@@ -7,10 +7,9 @@ const Header = () => (
     <nav>
       <ul className="header">
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/FAQ">Contact</Link></li>
-        <li><Link to="/DrawingPage">Draw</Link></li>
-        <li><Link to="/TriviaPage">Trivia</Link></li>
-        <li><Link to="/ExamplePage">ExamplePage</Link></li>
+        <li><Link to="/Drawing">Draw</Link></li>
+        <li><Link to="/Trivia">Trivia</Link></li>
+        <li><Link to="/Credits">Credits</Link></li>
       </ul>
     </nav>
   </header>
