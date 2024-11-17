@@ -24,12 +24,12 @@ const HintBox = () => {
     <div className="hintBox">
       <div className="hintBoxWords">
         <p>Hint: {hints[hintNumber]}</p>
-        <div>
+        <div className="buttonContainer">
           <Tooltip open={hintNumber === 0} title="First Hint">
-            <button onClick={handlePrev}>Prev</button>
+            <button className='hintButton' onClick={handlePrev}>Prev</button>
           </Tooltip>
           <Tooltip open={hintNumber === hints.length - 1} title="Last Hint">
-            <button onClick={handleNext}>Next</button>
+            <button className='hintButton' onClick={handleNext}>Next</button>
           </Tooltip>
         </div>
       </div>

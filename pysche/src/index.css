@@ -1,3 +1,6 @@
+*{
+  font-family: Helvetica;
+}
 /* Drawing Page and Canvas */
 .main-container {
   display: flex;
@@ -7,7 +10,7 @@
 /* Toolbar Containers, Colors, Resizing,Clear, and Canvas Size */
 .toolbar {
   position: relative;
-  margin-top: 120px;  /* Increased from 10px to move toolbar down */
+  margin-top: 120px;  
   display: flex;
   flex-direction: column;
   width: 150px;
@@ -110,8 +113,8 @@
 
 .canvas-container {
   text-align: center;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;  this causes problems*/
+  /* flex-direction: column; */
   gap: 20px;
 }
 
@@ -127,12 +130,33 @@
   background-color: rgb(241, 236, 228);
   padding: 15px;
   border-radius: 8px;
-  margin-top: auto;
+  margin-top: 15px;
+}
+.hintButton{
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #E3E2E5;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+ 
 }
 
-/* 
-.hintBoxWords{
+.hintButton:hover
+{
+  background-color: #F3722D;
+  color: white;
+}
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  gap: 10px;  /* This creates space between the buttons */
+}
+/* .hintBoxWords{
+  gap: ;
 } */
 
 /* Home CSS Styling */
@@ -150,7 +174,6 @@
   top: 313px;
   color: black;
   font-size: 96px;
-  font-family: Inter, sans-serif;
   font-weight: 400;
   word-wrap: break-word;
 }
@@ -177,7 +200,6 @@
   top: 46px;
   color: black;
   font-size: 14px;
-  font-family: Inter, sans-serif;
   font-weight: 400;
   word-wrap: break-word;
 }
@@ -186,7 +208,6 @@
   position: absolute;
   color: black;
   font-size: 20px;
-  font-family: Inter, sans-serif;
   font-weight: 400;
   word-wrap: break-word;
 }
@@ -225,7 +246,6 @@
   position: absolute;
   color: black;
   font-size: 32px;
-  font-family: Inter, sans-serif;
   font-weight: 400;
   word-wrap: break-word;
 }
@@ -256,7 +276,6 @@
   top: 1225px;
   color: black;
   font-size: 32px;
-  font-family: Inter, sans-serif;
   font-weight: 400;
   word-wrap: break-word;
 }
