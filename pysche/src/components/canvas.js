@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, forwardRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import HintBox from "../components/hints";
 
@@ -18,7 +19,14 @@ function Canvas() {
   const [startPoint, setStartPoint] = useState(null); // To store the starting point of the oval
   const [history, setHistory] = useState([]); // To track canvas history
   const [redoStack, setRedoStack] = useState([]); // To track redo history
+  const navigate = useNavigate();
 
+
+  const handleSubmit = () => {
+    const canvas = canvasRef.current;
+    const imageData = canvas.toDataURL("image/png"); // Save the canvas content as a data URL
+    navigate("/preview", { state: { image: imageData } }); // Pass it to the preview page
+  };  
 
   const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#5E1616"];
   const brushSizes = [3, 5, 10];
@@ -320,6 +328,11 @@ function Canvas() {
           <Tooltip title="Clear">
             <button className="canvasButton" onClick={clearCanvas}>Clear</button>
           </Tooltip>
+          <Tooltip title="Submit">
+          <button onClick={handleSubmit} className="canvasButton">
+          Submit Drawing
+          </button>
+          </Tooltip>
         </div>
       </div>
       <div className="canvas-container">
@@ -338,8 +351,7 @@ function Canvas() {
           }}
         />
         <div>
-        <HintBox/>
-
+          <HintBox />
         </div>
       </div>
     </div>
