@@ -142,27 +142,29 @@ function Canvas() {
   const fillArea = (x, y, fillColor) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-
+  
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
-
+  
     const targetColor = getPixelColor(data, x, y, canvas.width);
-    if (colorsMatch(targetColor, fillColor)) return;
-
+    if (colorsMatch(targetColor, fillColor)) return; // Avoid redundant fill
+  
     const stack = [[x, y]];
-
+  
     while (stack.length) {
       const [curX, curY] = stack.pop();
       const idx = (curY * canvas.width + curX) * 4;
-
+  
       if (colorsMatch(getPixelColor(data, curX, curY, canvas.width), targetColor)) {
         setPixelColor(data, idx, fillColor);
         stack.push([curX + 1, curY], [curX - 1, curY], [curX, curY + 1], [curX, curY - 1]);
       }
     }
-
+  
     ctx.putImageData(imageData, 0, 0);
+    saveCanvasState(); // Save the state after the fill operation
   };
+  
 
   const getPixelColor = (data, x, y, width) => {
     const idx = (y * width + x) * 4;
@@ -222,16 +224,16 @@ function Canvas() {
 
   const undo = () => {
     if (history.length === 0) return; // Nothing to undo
-
-    const lastState = history.pop(); // Get the last saved state
-    setRedoStack((prev) => [lastState, ...prev]); // Add it to redo stack
-    setHistory([...history]); // Update history
-
+  
+    const lastState = history.pop(); // Remove the most recent state
+    setRedoStack((prev) => [lastState, ...prev]); // Add it to the redo stack
+    setHistory([...history]); // Update the history
+  
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const img = new Image();
-
-    // Restore previous state or clear if none
+  
+    // Load the previous state or clear if none
     const previousState = history[history.length - 1] || "";
     img.src = previousState;
     img.onload = () => {
@@ -242,16 +244,16 @@ function Canvas() {
 
   const redo = () => {
     if (redoStack.length === 0) return; // Nothing to redo
-
-    const nextState = redoStack.shift(); // Get the next state
-    setHistory((prev) => [...prev, nextState]); // Add it back to history
+  
+    const nextState = redoStack.shift(); // Remove the most recent redo state
+    setHistory((prev) => [...prev, nextState]); // Add it back to the history
     setRedoStack([...redoStack]); // Update redo stack
-
+  
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const img = new Image();
-
-    img.src = nextState; // Use the redo state
+  
+    img.src = nextState; // Load the redo state
     img.onload = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
