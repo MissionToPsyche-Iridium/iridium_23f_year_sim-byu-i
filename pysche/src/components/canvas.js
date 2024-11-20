@@ -9,7 +9,7 @@ function Canvas() {
   const canvasRef = useRef(null);
   const [color, setColor] = useState("#000000");
   const [brushSize, setBrushSize] = useState(2);
-  //TODO: Find away so the canvas automatically changes with the screen. 
+  //TODO: Find a way so the canvas automatically changes with the screen. 
   const [canvasSize, setCanvasSize] = useState(600);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isFilling, setIsFilling] = useState(false);
@@ -21,7 +21,30 @@ function Canvas() {
   const [redoStack, setRedoStack] = useState([]); // To track redo history
   const navigate = useNavigate();
 
+  const toggleFillMode = () => {
+    setIsFilling(!isFilling);
+    setIsSpraying(false);
+    setIsErasing(false);
+  };
 
+  const toggleEraser = () => {
+    setIsErasing(!isErasing);
+    setIsSpraying(false);
+    setIsFilling(false);
+  };
+
+  const toggleSprayPaint = () => {
+    setIsSpraying(!isSpraying);
+    setIsErasing(false);
+    setIsFilling(false);
+  };
+
+  const toggleOvalTool = () => {
+    setIsOval(!isOval);
+    setIsSpraying(false);
+    setIsErasing(false);
+    setIsFilling(false);
+  };
   const handleSubmit = () => {
     const canvas = canvasRef.current;
     const imageData = canvas.toDataURL("image/png"); // Save the canvas content as a data URL
@@ -113,30 +136,6 @@ function Canvas() {
     saveCanvasState(); // Save the cleared state
   };
 
-  // const resizeCanvas = (e) => {
-  //   const newSize = parseInt(e.target.value, 10);
-  //   setCanvasSize(newSize);
-  //   clearCanvas();
-  // };
-
-  const toggleFillMode = () => {
-    setIsFilling(!isFilling);
-    setIsSpraying(false);
-    setIsErasing(false);
-  };
-
-  const toggleEraser = () => {
-    setIsErasing(!isErasing);
-    setIsSpraying(false);
-    setIsFilling(false);
-  };
-
-  const toggleSprayPaint = () => {
-    setIsSpraying(!isSpraying);
-    setIsErasing(false);
-    setIsFilling(false);
-  };
-
   const handleCanvasClick = (event) => {
     if (!isFilling) return;
 
@@ -216,12 +215,6 @@ function Canvas() {
     ctx.stroke();
   };
 
-  const toggleOvalTool = () => {
-    setIsOval(!isOval);
-    setIsSpraying(false);
-    setIsErasing(false);
-    setIsFilling(false);
-  };
 
   const saveCanvasState = () => {
     const canvas = canvasRef.current;
