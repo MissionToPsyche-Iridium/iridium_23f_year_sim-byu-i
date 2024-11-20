@@ -7,19 +7,19 @@ import "../index.css";
 
 function Canvas() {
   const canvasRef = useRef(null);
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState("#000000"); 
   const [brushSize, setBrushSize] = useState(2);
   //TODO: Find away so the canvas automatically changes with the screen. 
   const [canvasSize, setCanvasSize] = useState(600);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [isFilling, setIsFilling] = useState(false);
-  const [isErasing, setIsErasing] = useState(false);
-  const [isSpraying, setIsSpraying] = useState(false);
+  const [isDrawing, setIsDrawing] = useState(false); // State for the brushes
+  const [isFilling, setIsFilling] = useState(false); // State for the Fill tool
+  const [isErasing, setIsErasing] = useState(false); // State for the Eraser
+  const [isSpraying, setIsSpraying] = useState(false); // State for the Spray tool
   const [isOval, setIsOval] = useState(false); // New state for the oval tool
   const [startPoint, setStartPoint] = useState(null); // To store the starting point of the oval
   const [history, setHistory] = useState([]); // To track canvas history
   const [redoStack, setRedoStack] = useState([]); // To track redo history
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // sends the user to the corect page after pressing submit
 
 
   const handleSubmit = () => {
@@ -29,21 +29,22 @@ function Canvas() {
   };  
 
   const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#5E1616"];
-  const brushSizes = [3, 5, 10];
+  // color pallet for the canvas
+  const brushSizes = [3, 5, 10]; // Bruush sizes
 
   const startDrawing = (event) => {
     setIsDrawing(true);
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const y = event.clientY - rect.top; // drawing with the brushes
 
     if (isOval) {
       setStartPoint({ x, y }); // Store the start point for the oval
     } else {
       const ctx = canvas.getContext("2d");
-      ctx.beginPath();
-      ctx.moveTo(x, y);
+      ctx.beginPath(); //begin drawing on mouse click
+      ctx.moveTo(x, y); // move with the cursor for the drawing
     }
   };
 
@@ -78,7 +79,7 @@ function Canvas() {
 
     ctx.lineTo(x, y);
     ctx.stroke();
-  };
+  }; //controls the corect drawing when one is selected
 
   const sprayPaint = (event) => {
     if (!isDrawing || !isSpraying) return;
@@ -100,7 +101,7 @@ function Canvas() {
       const sprayY = y + offsetRadius * Math.sin(offsetAngle);
 
       ctx.fillRect(sprayX, sprayY, 1, 1);
-    }
+    } //controls the spray tool
 
     saveCanvasState(); // Save state after spraying
   };
@@ -123,19 +124,19 @@ function Canvas() {
     setIsFilling(!isFilling);
     setIsSpraying(false);
     setIsErasing(false);
-  };
+  }; //controls the fill tool button
 
   const toggleEraser = () => {
     setIsErasing(!isErasing);
     setIsSpraying(false);
     setIsFilling(false);
-  };
+  }; // controls the eraser button
 
   const toggleSprayPaint = () => {
     setIsSpraying(!isSpraying);
     setIsErasing(false);
     setIsFilling(false);
-  };
+  };  // controls the Spray tool button
 
   const handleCanvasClick = (event) => {
     if (!isFilling) return;
@@ -145,7 +146,7 @@ function Canvas() {
     const y = Math.floor(event.clientY - rect.top);
 
     fillArea(x, y, hexToRgb(color));
-  };
+  }; // controls the fill tool
 
   const fillArea = (x, y, fillColor) => {
     const canvas = canvasRef.current;
@@ -167,7 +168,7 @@ function Canvas() {
         setPixelColor(data, idx, fillColor);
         stack.push([curX + 1, curY], [curX - 1, curY], [curX, curY + 1], [curX, curY - 1]);
       }
-    }
+    } // makes sure the fill tool works correctly
   
     ctx.putImageData(imageData, 0, 0);
     saveCanvasState(); // Save the state after the fill operation
@@ -184,7 +185,7 @@ function Canvas() {
     data[idx + 1] = g;
     data[idx + 2] = b;
     data[idx + 3] = 255;
-  };
+  }; // makes sure the corect color is used when selected
 
   const colorsMatch = (color1, color2) => {
     return color1[0] === color2[0] && color1[1] === color2[1] && color1[2] === color2[2];
@@ -214,14 +215,14 @@ function Canvas() {
     ctx.strokeStyle = color;
     ctx.lineWidth = brushSize;
     ctx.stroke();
-  };
+  }; //controls the oval tool, makes sure oval is drawn corectly
 
   const toggleOvalTool = () => {
     setIsOval(!isOval);
     setIsSpraying(false);
     setIsErasing(false);
     setIsFilling(false);
-  };
+  }; // controls the oval tool button
 
   const saveCanvasState = () => {
     const canvas = canvasRef.current;
@@ -292,6 +293,7 @@ function Canvas() {
             </button>
           ))}
         </div>
+      
         <div className='brushOptions'>
           <Tooltip title="Fill">
             <button className="canvasButton" onClick={toggleFillMode}>
