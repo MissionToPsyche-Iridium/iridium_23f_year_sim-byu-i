@@ -9,11 +9,11 @@ function Canvas() {
   const canvasRef = useRef(null);
   // useStates 
   const [color, setColor] = useState("#000000");
-  const [brushSize, setBrushSize] = useState(2);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [isFilling, setIsFilling] = useState(false);
-  const [isErasing, setIsErasing] = useState(false);
-  const [isSpraying, setIsSpraying] = useState(false);
+  const [brushSize, setBrushSize] = useState(2); //New state for the brushes
+  const [isDrawing, setIsDrawing] = useState(false); // New state for drawing with the brushes
+  const [isFilling, setIsFilling] = useState(false); // New state for the fill tool
+  const [isErasing, setIsErasing] = useState(false); // new state for the eraser tool
+  const [isSpraying, setIsSpraying] = useState(false); // new state for the spray tool
   const [isOval, setIsOval] = useState(false); // New state for the oval tool
   const [startPoint, setStartPoint] = useState(null); // To store the starting point of the oval
   const [history, setHistory] = useState([]); // To track canvas history
@@ -21,8 +21,9 @@ function Canvas() {
 
   // Other Constants
   const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#5E1616"];
-  const brushSizes = [3, 5, 10];
-  const navigate = useNavigate();
+  // color pallete for the canvas
+  const brushSizes = [3, 5, 10]; // brush sizes
+  const navigate = useNavigate(); // corectly sends the user to the preview page after submiting
 
   //TODO: Find a way so the canvas automatically changes with the screen. 
   const [canvasSize, setCanvasSize] = useState(600);
@@ -119,7 +120,7 @@ function Canvas() {
       const sprayY = y + offsetRadius * Math.sin(offsetAngle);
 
       ctx.fillRect(sprayX, sprayY, 1, 1);
-    }
+    } // controls the spray tool
 
     saveCanvasState(); // Save state after spraying
   };
@@ -130,7 +131,7 @@ function Canvas() {
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     saveCanvasState(); // Save the cleared state
-  };
+  }; // controls the clear tool
 
   const handleCanvasClick = (event) => {
     if (!isFilling) return;
@@ -140,7 +141,7 @@ function Canvas() {
     const y = Math.floor(event.clientY - rect.top);
 
     fillArea(x, y, hexToRgb(color));
-  };
+  }; // controls the fill tool
 
   const fillArea = (x, y, fillColor) => {
     const canvas = canvasRef.current;
@@ -162,7 +163,7 @@ function Canvas() {
         setPixelColor(data, idx, fillColor);
         stack.push([curX + 1, curY], [curX - 1, curY], [curX, curY + 1], [curX, curY - 1]);
       }
-    }
+    } // makes sure the fill tool does corect action
 
     ctx.putImageData(imageData, 0, 0);
     saveCanvasState(); // Save the state after the fill operation
@@ -209,7 +210,7 @@ function Canvas() {
     ctx.strokeStyle = color;
     ctx.lineWidth = brushSize;
     ctx.stroke();
-  };
+  }; // controls the oval tool, makes sure oval is drawn correctly
 
 
   const saveCanvasState = () => {
