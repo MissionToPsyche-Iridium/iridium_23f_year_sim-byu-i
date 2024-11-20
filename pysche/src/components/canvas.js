@@ -20,31 +20,23 @@ function Canvas() {
   const [history, setHistory] = useState([]); // To track canvas history
   const [redoStack, setRedoStack] = useState([]); // To track redo history
   const navigate = useNavigate();
-
-  const toggleFillMode = () => {
-    setIsFilling(!isFilling);
-    setIsSpraying(false);
-    setIsErasing(false);
+  
+  // Checks if tool is true or not and then based on the tool toggles on and off
+  const toggleTool = (tool) => {
+    
+    const isActive = {
+      fill: isFilling,
+      spray: isSpraying,
+      erase: isErasing,
+      oval: isOval,
+    };
+  
+    setIsFilling(tool === "fill" ? !isActive.fill : false);
+    setIsSpraying(tool === "spray" ? !isActive.spray : false);
+    setIsErasing(tool === "erase" ? !isActive.erase : false);
+    setIsOval(tool === "oval" ? !isActive.oval : false);
   };
 
-  const toggleEraser = () => {
-    setIsErasing(!isErasing);
-    setIsSpraying(false);
-    setIsFilling(false);
-  };
-
-  const toggleSprayPaint = () => {
-    setIsSpraying(!isSpraying);
-    setIsErasing(false);
-    setIsFilling(false);
-  };
-
-  const toggleOvalTool = () => {
-    setIsOval(!isOval);
-    setIsSpraying(false);
-    setIsErasing(false);
-    setIsFilling(false);
-  };
   const handleSubmit = () => {
     const canvas = canvasRef.current;
     const imageData = canvas.toDataURL("image/png"); // Save the canvas content as a data URL
@@ -286,29 +278,29 @@ function Canvas() {
           ))}
         </div>
         <div className='brushOptions'>
-          <Tooltip title="Fill">
-            <button className="canvasButton" onClick={toggleFillMode}>
-              {isFilling ? "Disable Fill" : "Enable Fill"}
-            </button>
-          </Tooltip>
+        <Tooltip title="Fill">
+  <button className="canvasButton" onClick={() => toggleTool("fill")}>
+    {isFilling ? "Disable Fill" : "Enable Fill"}
+  </button>
+</Tooltip>
 
-          <Tooltip title="Eraser">
-            <button className="canvasButton" onClick={toggleEraser}>
-              {isErasing ? "Disable Eraser" : "Enable Eraser"}
-            </button>
-          </Tooltip>
+<Tooltip title="Eraser">
+  <button className="canvasButton" onClick={() => toggleTool("erase")}>
+    {isErasing ? "Disable Eraser" : "Enable Eraser"}
+  </button>
+</Tooltip>
 
-          <Tooltip title="Spray">
-            <button className="canvasButton" onClick={toggleSprayPaint}>
-              {isSpraying ? "Disable Spray" : "Enable Spray"}
-            </button>
-          </Tooltip>
+<Tooltip title="Spray">
+  <button className="canvasButton" onClick={() => toggleTool("spray")}>
+    {isSpraying ? "Disable Spray" : "Enable Spray"}
+  </button>
+</Tooltip>
 
-          <Tooltip title="Oval">
-            <button className="canvasButton" onClick={toggleOvalTool}>
-              {isOval ? "Disable Oval" : "Enable Oval"}
-            </button>
-          </Tooltip>
+<Tooltip title="Oval">
+  <button className="canvasButton" onClick={() => toggleTool("oval")}>
+    {isOval ? "Disable Oval" : "Enable Oval"}
+  </button>
+</Tooltip>
 
           <Tooltip title="Undo">
             <button className="canvasButton" onClick={undo}>Undo</button>
