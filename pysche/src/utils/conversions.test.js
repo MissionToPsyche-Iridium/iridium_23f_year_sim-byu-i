@@ -1,3 +1,5 @@
+// Author: Jackson Westover
+
 import { calcAgeYears, calcAgeDays, calcPsycheWeight} from './conversions.js';
 
 // TODO: calcPsycheWeight function was modified. tests are deprecated

@@ -1,3 +1,5 @@
+// Author: Jackson Westover
+
 import React from 'react';
 import { FormControlLabel, Switch } from '@mui/material';
 
