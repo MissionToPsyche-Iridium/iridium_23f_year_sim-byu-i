@@ -1,3 +1,5 @@
+// Author: Jackson Westover
+
 export { calcPsycheWeight };
 
 function calcPsycheWeight(earthWeight, isKg) {
