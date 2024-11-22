@@ -18,7 +18,7 @@ const arial = {
 
 // WeightConverter Component
 
-// This component creates a calculatore that converts Earth Weight to Psyche weight. It allows a user to input their weight in lbs or kg and determines what their weight would be on Pysche.
+// This component creates a calculator that converts Earth Weight to Psyche weight. It allows a user to input their weight in lbs or kg and determines what their weight would be on Pysche.
 function WeightConverter() {
   // state for managing weight unit
   const [isKg, setIsKg] = useState(false);
