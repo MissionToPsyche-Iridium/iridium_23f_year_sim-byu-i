@@ -2,6 +2,13 @@ import React, { useRef, useState, forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import HintBox from "../components/hints";
+import { IoColorFill } from "react-icons/io5";
+import { FaEraser } from "react-icons/fa";
+import { TbOval } from "react-icons/tb";
+import { GiSpray } from "react-icons/gi";
+import { LuUndo2, LuRedo } from "react-icons/lu";
+import { FaPaintbrush } from "react-icons/fa6";
+
 
 import "../index.css";
 
@@ -28,21 +35,23 @@ function Canvas() {
   //TODO: Find a way so the canvas automatically changes with the screen. 
   const [canvasSize, setCanvasSize] = useState(600);
 
+
+  const isActive = {
+    fill: isFilling,
+    spray: isSpraying,
+    erase: isErasing,
+    oval: isOval,
+  };
+
   // Checks if tool is true or not and then based on the tool toggles on and off
   const toggleTool = (tool) => {
-
-    const isActive = {
-      fill: isFilling,
-      spray: isSpraying,
-      erase: isErasing,
-      oval: isOval,
-    };
 
     setIsFilling(tool === "fill" ? !isActive.fill : false);
     setIsSpraying(tool === "spray" ? !isActive.spray : false);
     setIsErasing(tool === "erase" ? !isActive.erase : false);
     setIsOval(tool === "oval" ? !isActive.oval : false);
   };
+  const isAnyActive = isFilling || isSpraying || isErasing || isOval;
 
   const handleSubmit = () => {
     const canvas = canvasRef.current;
@@ -272,6 +281,9 @@ function Canvas() {
             />
           ))}
         </div>
+        <div className='Brush-Icon'>
+          {isAnyActive ? <FaPaintbrush style={{ fontSize: "1 rem", color: "black" }} /> : <FaPaintbrush style={{ fontSize: "1.2 rem", color: "#9C3852" }} />} Brush
+        </div>
         <div className="brushSizes">
           {brushSizes.map((size, index) => (
             <button
@@ -279,50 +291,54 @@ function Canvas() {
               key={size}
               onClick={() => setBrushSize(size)}
             >
+
             </button>
           ))}
         </div>
         <div className='brushOptions'>
+
           <Tooltip title="Fill">
             <button className="canvasButton" onClick={() => toggleTool("fill")}>
-              {isFilling ? "Disable Fill" : "Enable Fill"}
+              {isFilling ? <IoColorFill style={{ fontSize: "2rem", color: "#9C3852" }} /> : <IoColorFill />} Enable Fill
             </button>
           </Tooltip>
 
           <Tooltip title="Eraser">
             <button className="canvasButton" onClick={() => toggleTool("erase")}>
-              {isErasing ? "Disable Eraser" : "Enable Eraser"}
+              {isErasing ? <FaEraser style={{ fontSize: "2rem", color: "#9C3852" }} /> : <FaEraser />} Erase
             </button>
           </Tooltip>
 
           <Tooltip title="Spray">
             <button className="canvasButton" onClick={() => toggleTool("spray")}>
-              {isSpraying ? "Disable Spray" : "Enable Spray"}
+              {isSpraying ? <GiSpray style={{ fontSize: "2rem", color: "#9C3852" }} />
+                : <GiSpray />} Spray
             </button>
           </Tooltip>
 
           <Tooltip title="Oval">
             <button className="canvasButton" onClick={() => toggleTool("oval")}>
-              {isOval ? "Disable Oval" : "Enable Oval"}
+              {isOval ? (
+                <TbOval style={{ fontSize: "2rem", color: "#9C3852" }} />
+              ) : (
+                <TbOval style={{ fontSize: "1.5rem" }} />
+              )} Oval
             </button>
           </Tooltip>
 
+
           <Tooltip title="Undo">
-            <button className="canvasButton" onClick={undo}>Undo</button>
+            <button className="canvasButton" onClick={undo}><LuUndo2 /></button>
           </Tooltip>
 
           <Tooltip title="Redo">
-            <button className="canvasButton" onClick={redo}>Redo</button>
+            <button className="canvasButton" onClick={redo}><LuRedo /></button>
           </Tooltip>
 
-          <Tooltip title="Clear">
-            <button className="canvasButton" onClick={clearCanvas}>Clear</button>
-          </Tooltip>
-          <Tooltip title="Submit">
-            <button onClick={handleSubmit} className="canvasButton">
-              Submit Drawing
-            </button>
-          </Tooltip>
+          <button className="canvasButton" onClick={clearCanvas}>Clear</button>
+          <button onClick={handleSubmit} className="canvasButton">
+            Submit Drawing
+          </button>
         </div>
       </div>
       <div className="canvas-container">
