@@ -33,7 +33,7 @@ function Canvas() {
 
 
   const canvasRef = useRef(null);
-  const [canvasSize, setCanvasSize] = useState({ width: 600, height: 600 });
+  const [canvasSize, setCanvasSize] = useState({ width: 700, height: 700 });
 
   //TODO: Find a way so the canvas automatically changes with the screen. 
   // This works for the most part except everthing else in the screen would need to change
