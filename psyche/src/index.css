@@ -112,10 +112,10 @@
 }
 
 .canvas-container {
+  display: block; 
+  max-width: 100%; 
+  margin: 0 auto; /* Centers the canvas */
   text-align: center;
-  /* display: flex;  this causes problems*/
-  /* flex-direction: column; */
-  gap: 20px;
 }
 
 .canvas {
@@ -124,15 +124,24 @@
   border-radius: 10%;
 }
 
-/* Hint CSS */
 .hintBox {
   border: 2px solid #030000;
   background-color: rgb(241, 236, 228);
   padding: 15px;
   border-radius: 8px;
   margin-top: 15px;
+  width: 600px;
+  height: 100px; 
+  overflow: hidden; 
 }
-.hintButton{
+
+.hintBoxWords {
+  white-space: normal; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+
+.hintButton {
   padding: 8px;
   cursor: pointer;
   border-radius: 8px;
@@ -140,24 +149,19 @@
   background-color: #E3E2E5;
   transition: all 0.3s ease;
   font-size: 0.9rem;
- 
 }
 
-.hintButton:hover
-{
+.hintButton:hover {
   background-color: #F3722D;
   color: white;
 }
+
 .buttonContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  gap: 10px;  /* This creates space between the buttons */
+  gap: 10px; /* This creates space between the buttons */
 }
-/* .hintBoxWords{
-  gap: ;
-} */
 
 /* Home CSS Styling */
 .home-container {

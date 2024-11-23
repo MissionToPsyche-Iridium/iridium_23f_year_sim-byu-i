@@ -1,4 +1,4 @@
-import React, { useRef, useState, forwardRef } from 'react';
+import React, { useRef, useState, forwardRef,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import HintBox from "../components/hints";
@@ -13,7 +13,6 @@ import { FaPaintbrush } from "react-icons/fa6";
 import "../index.css";
 
 function Canvas() {
-  const canvasRef = useRef(null);
   // useStates 
   const [color, setColor] = useState("#000000");
   const [brushSize, setBrushSize] = useState(2); //New state for the brushes
@@ -32,8 +31,26 @@ function Canvas() {
   const brushSizes = [3, 5, 10]; // brush sizes
   const navigate = useNavigate(); // corectly sends the user to the preview page after submiting
 
+
+  const canvasRef = useRef(null);
+  const [canvasSize, setCanvasSize] = useState({ width: 600, height: 600 });
+
   //TODO: Find a way so the canvas automatically changes with the screen. 
-  const [canvasSize, setCanvasSize] = useState(600);
+  // This works for the most part except everthing else in the screen would need to change
+  // as well for it to look good 
+  // TODO: Take out this comment when after explainging to group
+
+  // useEffect(() => {
+  //   const resizeCanvas = () => {
+  //     const width = Math.max(300, window.innerWidth * 0.5); 
+  //     const height = Math.max(300, window.innerHeight * 0.5); 
+  //     setCanvasSize({ width, height });
+  //   };
+  
+  //   resizeCanvas();
+  //   window.addEventListener("resize", resizeCanvas);
+  //   return () => window.removeEventListener("resize", resizeCanvas);
+  // }, []);
 
 
   const isActive = {
@@ -346,8 +363,8 @@ function Canvas() {
         <canvas
           className="canvas"
           ref={canvasRef}
-          width={canvasSize}
-          height={canvasSize}
+          width={canvasSize.width}
+          height={canvasSize.height}
           onMouseDown={(e) => { isFilling ? handleCanvasClick(e) : startDrawing(e); }}
           onMouseUp={endDrawing}
           onMouseOut={endDrawing}
