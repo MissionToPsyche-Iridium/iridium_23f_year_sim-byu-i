@@ -1,6 +1,7 @@
+/* TODO:: This is all placeholder you can change as you want */
+
 header {
-    background-color: rgb(75, 56, 121);
-    background-image: linear-gradient(to right, rgba(165, 102, 201, 0.384) 0%, rgb(84, 82, 192) 100%);
+    background-image: linear-gradient(to right, rgb(48, 33, 68), rgb(89, 38, 81) 33%, rgb(165, 63, 91) 66%, rgb(239, 89, 102));
     padding: 10px;
   }
   

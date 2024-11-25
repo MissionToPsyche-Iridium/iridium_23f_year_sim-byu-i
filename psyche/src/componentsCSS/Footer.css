@@ -1,13 +1,20 @@
+/* TODO:: This is all placeholder you can change as you want  I did get this from
+ https://psyche.asu.edu/ main page though */
+
 footer {
-    background-color: #333;
-    background-image: linear-gradient(to right, rgba(30, 29, 31, 0.384), rgb(49, 24, 187)); 
-    padding: 40px;
-    color: #fafafa;
-    text-align: center;
-    padding: 10px;
-    /* position:fixed; */
-    bottom:0;
-    left: 0;
-    right:0;
-    height:30px;
-  }
+  background-image: linear-gradient(to right, rgb(48, 33, 68), rgb(89, 38, 81) 33%, rgb(165, 63, 91) 66%, rgb(239, 89, 102));
+  background-repeat: repeat-x;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  display: block;
+  font-family: Helvetica, sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  /* height: 100px; */
+  line-height: 31px;
+  opacity: 1;
+  padding: 40px 0;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  width: 100%;
+}

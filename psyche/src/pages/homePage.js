@@ -22,10 +22,7 @@ function HomePage() {
       <div className="home-button-text home-text-illustrator">Psyche Illustrator</div>
       <div className="home-button-text home-text-trivia">Trivia</div>
 
-      {/* Footer */}
-      <div className="home-footer">
-        <div className="home-footer-text">NASA Psyche Project &#169;</div>
-      </div>
+
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import "./../componentsCSS/Footer.css"
 const Footer = () => (
     <footer>
-    <p>&copy; SOMETHING IDK YET</p>
+    <p>NASA Psyche Project &#169;</p>
   </footer>
 )
 
