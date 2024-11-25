@@ -25,7 +25,7 @@ const ImageScroller = () => {
   return (
     <div style={{ textAlign: 'center' }}>
       <h2>Artist Rendition</h2>
-      <div style={{ maxWidth: '500px', margin: 'auto', position: 'relative' }}>
+      <div style={{ maxWidth: '65%', maxHeight: '100%', margin: 'auto', position: 'relative' }}>
         {/* Display current image */}
         <img 
           src={images[currentIndex]} 
