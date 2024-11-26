@@ -16,7 +16,7 @@ function PreviewPage() {
     const ctx = canvas.getContext('2d');
 
     // Overlay PNG source (Replace with the path to your overlay PNG file)
-    const overlayImageSrc = '/images/PsycheStamp.png';
+    const overlayImageSrc = '/images/PsycheStamp1.png';
 
     // Create new images
     const userImage = new Image();
