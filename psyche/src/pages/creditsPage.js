@@ -45,7 +45,7 @@ const CreditsPage = () => (
             </div>
             <div className="PhotoItem">
                 <img src={Bryer} alt="Description of 4" className="photoCSS" />
-                <p className="captionCSS">Bryer Johnson - Software Engineering Major, Chiled Development Emphasis</p>
+                <p className="captionCSS">Bryer Johnson - Software Engineering Major, Child Development Emphasis</p>
             </div>
             <div className="PhotoItem">
                 <img src={Brodie} alt="Description of 5" className="photoCSS" />
