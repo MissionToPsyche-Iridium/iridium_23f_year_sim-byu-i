@@ -1,4 +1,5 @@
-import React, { useRef, useState, forwardRef,useEffect } from 'react';
+// All Tools and Canvas Functions for Draw Page
+import React, { useRef, useState, forwardRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import HintBox from "../components/hints";
@@ -24,16 +25,13 @@ function Canvas() {
   const [startPoint, setStartPoint] = useState(null); // To store the starting point of the oval
   const [history, setHistory] = useState([]); // To track canvas history
   const [redoStack, setRedoStack] = useState([]); // To track redo history
+  const [canvasSize, setCanvasSize] = useState({ width: 700, height: 700 }); // To Track canvas Size 
 
   // Other Constants
   const colors = ["#3B515A", "#392919", "#7B5314", "#1B2029", "#E9E9EB", "#7E7157", "#929087", "#CECBC9", "#1F2D3A", "#ADACAB", "#4A4048", "#5E1616"];
-  // color pallete for the canvas
   const brushSizes = [3, 5, 10]; // brush sizes
   const navigate = useNavigate(); // corectly sends the user to the preview page after submiting
-
-
   const canvasRef = useRef(null);
-  const [canvasSize, setCanvasSize] = useState({ width: 700, height: 700 });
 
   //TODO: Find a way so the canvas automatically changes with the screen. 
   // This works for the most part except everthing else in the screen would need to change
@@ -46,7 +44,7 @@ function Canvas() {
   //     const height = Math.max(300, window.innerHeight * 0.5); 
   //     setCanvasSize({ width, height });
   //   };
-  
+
   //   resizeCanvas();
   //   window.addEventListener("resize", resizeCanvas);
   //   return () => window.removeEventListener("resize", resizeCanvas);
@@ -60,7 +58,11 @@ function Canvas() {
     oval: isOval,
   };
 
-  // Checks if tool is true or not and then based on the tool toggles on and off
+  // Useful for activating Brush Color
+  const isAnyActive = isFilling || isSpraying || isErasing || isOval;
+
+
+  // Checks if tool is true or not and then based on the tool toggles true or false
   const toggleTool = (tool) => {
 
     setIsFilling(tool === "fill" ? !isActive.fill : false);
@@ -68,7 +70,6 @@ function Canvas() {
     setIsErasing(tool === "erase" ? !isActive.erase : false);
     setIsOval(tool === "oval" ? !isActive.oval : false);
   };
-  const isAnyActive = isFilling || isSpraying || isErasing || isOval;
 
   const handleSubmit = () => {
     const canvas = canvasRef.current;
@@ -298,8 +299,9 @@ function Canvas() {
             />
           ))}
         </div>
+        {/* Change color of Brush based on if tools are active */}
         <div className='Brush-Icon'>
-          {isAnyActive ? <FaPaintbrush style={{ fontSize: "1 rem", color: "black" }} /> : <FaPaintbrush style={{ fontSize: "1.2 rem", color: "#9C3852" }} />} Brush
+          {isAnyActive ? <FaPaintbrush style={{ fontSize: "1.5rem", color: "black" }} /> : <FaPaintbrush style={{ fontSize: "1.5rem", color: "#9C3852" }} />} Brush
         </div>
         <div className="brushSizes">
           {brushSizes.map((size, index) => (
@@ -313,23 +315,26 @@ function Canvas() {
           ))}
         </div>
         <div className='brushOptions'>
-
+          {/* Change color of Tools based on if enabled or not using toggleTool. 
+        ToolTip provides a label once hovering over tool  */}
           <Tooltip title="Fill">
             <button className="canvasButton" onClick={() => toggleTool("fill")}>
-              {isFilling ? <IoColorFill style={{ fontSize: "2rem", color: "#9C3852" }} /> : <IoColorFill />} Enable Fill
+              {isFilling ? <IoColorFill style={{ fontSize: "2rem", color: "#9C3852" }} /> :
+                <IoColorFill style={{ fontSize: "1.5rem" }} />}  Fill
             </button>
           </Tooltip>
 
           <Tooltip title="Eraser">
             <button className="canvasButton" onClick={() => toggleTool("erase")}>
-              {isErasing ? <FaEraser style={{ fontSize: "2rem", color: "#9C3852" }} /> : <FaEraser />} Erase
+              {isErasing ? <FaEraser style={{ fontSize: "2rem", color: "#9C3852" }} /> :
+                <FaEraser style={{ fontSize: "1.5rem" }} />} Erase
             </button>
           </Tooltip>
 
           <Tooltip title="Spray">
             <button className="canvasButton" onClick={() => toggleTool("spray")}>
               {isSpraying ? <GiSpray style={{ fontSize: "2rem", color: "#9C3852" }} />
-                : <GiSpray />} Spray
+                : <GiSpray style={{ fontSize: "1.5rem" }} />} Spray
             </button>
           </Tooltip>
 
@@ -343,6 +348,7 @@ function Canvas() {
             </button>
           </Tooltip>
 
+          {/* Undo and Redo buttons */}
 
           <Tooltip title="Undo">
             <button className="canvasButton" onClick={undo}><LuUndo2 /></button>
@@ -374,6 +380,8 @@ function Canvas() {
           }}
         />
         <div>
+          {/* Import Hint Box at bottom of page*/}
+
           <HintBox />
         </div>
       </div>

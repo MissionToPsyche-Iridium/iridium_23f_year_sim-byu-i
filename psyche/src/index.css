@@ -7,7 +7,7 @@
   padding: 20px;
   gap: 30px;
 }
-/* Toolbar Containers, Colors, Resizing,Clear, and Canvas Size */
+/* Toolbar Containers, Colors, Resizing,Clear, and Canvas CSS */
 .toolbar {
   position: relative;
   margin-top: 100px;  
@@ -122,6 +122,8 @@
   border-radius: 10%;
 }
 
+/* Hint CSS */
+
 .hintBox {
   border: 2px solid #030000;
   background-color: rgb(241, 236, 228);
@@ -171,7 +173,6 @@
   background: white;
 }
 
-/* Buttons Section */
 .home-buttons-section {
   display: flex;
   gap: 20px; /* Add spacing between buttons */

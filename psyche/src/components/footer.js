@@ -1,3 +1,4 @@
+// Basic Footer component for Layout
 import React from "react";
 import "./../componentsCSS/Footer.css"
 const Footer = () => (

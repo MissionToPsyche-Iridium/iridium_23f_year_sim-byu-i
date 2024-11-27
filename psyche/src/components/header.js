@@ -1,3 +1,5 @@
+// Basic Header component for Layout
+
 import React from "react";
 import { Link } from "react-router-dom";
 import "./../componentsCSS/Header.css";
