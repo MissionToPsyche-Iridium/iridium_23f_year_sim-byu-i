@@ -6,13 +6,13 @@
 
 }
 
-a {
+a.sup {
     text-decoration: none;
     color: blue;
     
 }
 
-a:hover {
+a:hover.sup {
     color: rgb(255, 94, 0);
     
 }
