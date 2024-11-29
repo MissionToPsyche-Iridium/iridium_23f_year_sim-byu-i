@@ -5,3 +5,14 @@
     padding: 20px;
 
 }
+
+a {
+    text-decoration: none;
+    color: blue;
+    
+}
+
+a:hover {
+    color: rgb(255, 94, 0);
+    
+}
