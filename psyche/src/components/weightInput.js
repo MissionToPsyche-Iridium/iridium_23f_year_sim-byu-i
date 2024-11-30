@@ -11,7 +11,7 @@ function WeightInput({ weight, isKg, onChange  }) {
         <TextField 
             fullWidth
             id="weight-input"
-            label="Enter your weight"
+            label="Enter your weight on Earth"
             type="number"
             placeholder={`Weight in ${isKg ? 'kg' : 'lb'}`}
             value={weight}
