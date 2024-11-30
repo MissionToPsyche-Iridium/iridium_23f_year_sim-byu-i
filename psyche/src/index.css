@@ -168,37 +168,51 @@
 /* Home CSS Styling */
 .home-container {
   width: 100%;
-  height: 1024px;
+  min-height: 80vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background: white;
+  padding: 20px;
+}
+
+.home-words {
+  text-align: center;
+  max-width: 800px;
+  line-height: 1.6;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
 }
 
 .home-buttons-section {
   display: flex;
-  gap: 20px; /* Add spacing between buttons */
-  flex-direction: row;
+  gap: 30px; 
+  justify-content: center;
+  flex-wrap: wrap; /* Ensures buttons stack on smaller screens */
 }
 
 .home-button-container {
   text-align: center;
 }
 
+.home-button-container p {
+  font-size: 1.375rem ;
+  margin-bottom: 10px;
+  color: #555;
+}
+
 .home-button {
-  width: 200px;
-  height: 60px;
-  background: #8dbaee;
-  border-radius: 12px;
-  border: 2px solid black;
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #E3E2E5;
+  font-size: 1rem;
 }
 
 .home-button:hover {
-  background-color: #75a7d9;
+  background-color: #F3722D;
+  color: white;
   transform: scale(1.05);
 }
