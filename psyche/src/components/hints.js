@@ -11,7 +11,6 @@ const hints = [
   "Psyche has two depressions or craters on it that are about 67 km wide.",
   "Psyche is most likely relatively smooth."
 ];
-//TODO: Make words stay in set size box without expanding it
 const HintBox = () => {
   const [hintNumber, setHintNumber] = useState(0);
 

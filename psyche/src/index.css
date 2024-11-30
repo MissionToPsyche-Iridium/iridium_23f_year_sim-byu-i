@@ -142,6 +142,9 @@
   overflow: hidden; 
   text-overflow: ellipsis; 
 }
+.hintBoxWords p {
+  font-size: 1rem;
+}
 
 .hintButton {
   padding: 8px;
@@ -165,58 +168,74 @@
   gap: 10px; /* This creates space between the buttons */
 }
 
+
 /* Home CSS Styling */
 .home-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  min-height: 80vh;
+  background-color: #ffffff; /* White background for the other half */
+}
+
+.home-background {
+  flex: .8; /* Takes up half the screen */
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("psyche/public/images/PyscheSat.png");
+  background-size: cover;
+  background-position: center;
 }
 
 .home-content {
+  flex: 1; /* Takes up the other half of the screen */
   display: flex;
-  flex-direction: row;
-  gap: 50px;
-  max-width: 1200px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: #333; /* Dark text for better readability on white */
 }
 
+.home-words h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #333;
+}
 
 .home-words p {
-  font-size: 1.375rem ;
-  margin-bottom: 10px;
-}
-.h2Psyche {
-  font-size: 1.5rem 700;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.home-words h3 {
-  font-size: 1.5rem 700;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 .home-buttons-section {
   display: flex;
-  gap: 30px; 
+  gap: 20px;
   justify-content: center;
   flex-wrap: wrap; /* Ensures buttons stack on smaller screens */
 }
 
-.home-button-container {
-  text-align: center;
+.home-button-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .home-button {
-  padding: 20px 50px;
+  padding: 15px 30px;
   cursor: pointer;
-  border-radius: 10px;
-  border: 1px solid #130d0d;
+  border-radius: 8px;
+  border: none;
   background-color: #E3E2E5;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
 }
 
 .home-button:hover {
   background-color: #F3722D;
   color: white;
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
