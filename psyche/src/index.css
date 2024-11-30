@@ -167,26 +167,28 @@
 
 /* Home CSS Styling */
 .home-container {
-  width: 100%;
-  min-height: 80vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 20px;
 }
 
-.home-words {
-  text-align: center;
-  max-width: 800px;
-  line-height: 1.6;
-  color: #333;
-  font-family: 'Arial', sans-serif;
-  font-size: 1.2rem;
-  margin-bottom: 40px;
+.home-content {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  max-width: 1200px;
 }
+
+
 .home-words p {
   font-size: 1.375rem ;
   margin-bottom: 10px;
+}
+.h2Psyche {
+  font-size: 1.5rem 700;
+  margin-bottom: 10px;
+  text-align: center;
 }
 .home-words h3 {
   font-size: 1.5rem 700;
@@ -202,12 +204,6 @@
 
 .home-button-container {
   text-align: center;
-}
-
-.home-button-container p {
-  font-size: 1.375rem ;
-  margin-bottom: 10px;
-  color: #555;
 }
 
 .home-button {
