@@ -24,11 +24,11 @@ const CreditsPage = () => (
             </div>
             <div className="PhotoItem">
                 <img src={Jackson} alt="Description of 3" className="photoCSS" />
-                <p className="captionCSS">Jackson Westover - Computer Science Major, Machine Learning Emphasis</p>
+                <p className="captionCSS">Jackson Westover - Computer Science Major, Emphasis in Machine Learning</p>
             </div>
             <div className="PhotoItem">
                 <img src={Bryer} alt="Description of 4" className="photoCSS" />
-                <p className="captionCSS">Bryer Johnson - Software Engineering Major, Child Development Emphasis</p>
+                <p className="captionCSS">Bryer Johnson - Software Engineering Major, Emphasis in Child Development</p>
             </div>
             <div className="PhotoItem">
                 <img src={Brodie} alt="Description of 5" className="photoCSS" />
