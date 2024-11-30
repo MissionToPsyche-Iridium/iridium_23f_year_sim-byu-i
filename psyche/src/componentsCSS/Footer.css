@@ -1,3 +1,4 @@
+/* Authors: Jackson Westover & */
 /* TODO:: This is all placeholder you can change as you want  I did get this from
  https://psyche.asu.edu/ main page though */
 
@@ -13,8 +14,21 @@ footer {
   /* height: 100px; */
   line-height: 31px;
   opacity: 1;
-  padding: 40px 0;
+  padding: 16px 0;
   text-align: center;
   text-rendering: optimizeLegibility;
   width: 100%;
+}
+
+strong {
+  font-weight: 500;
+}
+
+h3 {
+  font-weight: 100;
+}
+
+p {
+  font-size: 12px;
+  font-weight: 100;
 }
