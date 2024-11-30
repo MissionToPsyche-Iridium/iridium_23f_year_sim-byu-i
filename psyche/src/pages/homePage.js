@@ -10,15 +10,22 @@ function HomePage() {
       {/* Introduction Section */}
       <div className="home-words">
         <h2>
-          What is Psyche? Psyche is an asteroid that is more metal than rock or ice. NASA, in order to learn more about this asteroid, launched a satellite with the same name, *Psyche*, to study this potential partial core of a planetesimal. This mission will allow us to study the early building blocks of an early planet.
+          What is Psyche?
         </h2>
-
+        <p>
+          Psyche is an asteroid that is more metal than
+          rock or ice. NASA, in order to learn more about
+          this asteroid, launched a satellite with the same name,
+          *Psyche*, to study this potential partial core of a
+          planetesimal. This mission will allow us to study the
+          early building blocks of an early planet.
+        </p>
 
         {/* Buttons Section */}
         <div className="home-buttons-section">
           {/* Drawing Section */}
           <div className="home-button-container">
-            <p>Want to try drawing an asteroid?</p>
+            <h3>Want to try drawing an asteroid?</h3>
             <Link to="/Drawing">
               <button className="home-button">Psyche Illustrator</button>
             </Link>
@@ -26,14 +33,14 @@ function HomePage() {
 
           {/* Trivia Section */}
           <div className="home-button-container">
-            <p>Want to learn more about Psyche?</p>
+            <h3>Want to learn more about Psyche?</h3>
             <Link to="/Trivia">
               <button className="home-button">Trivia</button>
             </Link>
           </div>
-          <h2>
+          <p>
             The Psyche satellite will reach the asteroid by August 2029, revealing more about its composition and appearance. In the meantime, check out some trivia about it, calculate your own weight on Psyche, or try drawing your version of it. Once you submit your drawing, you'll even get to see artist renditions of the asteroid.
-          </h2>
+          </p>
         </div>
       </div>
     </div>
