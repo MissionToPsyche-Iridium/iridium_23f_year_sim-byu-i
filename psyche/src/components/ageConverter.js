@@ -133,9 +133,16 @@ function AgeConverter() {
     return (
     
         
-        <div class="box">
+        // <div class="box">
+        <div class="agePlacement">
             {/* Dropbox for months. */}
-            <label for="userAge">Enter Your Birthday: </label>
+            
+            <label for="userAge">Age Converter - How old would you be on Psyche? </label>
+            <br></br>
+            <br></br>
+            Enter Your Birthday:
+            <br></br>
+
             <select id="months" value={selectedMonth} onChange={changeMonth}>
                 <option value="Month">Month</option>
                 <option value="1">January</option>
@@ -172,8 +179,43 @@ function AgeConverter() {
             <button onClick={setAge}>Submit</button>
 
             {/* Ideally these would show up only after the Submit button has been clicked. Right now this will work as a proof of concept. */}
-            <p>You are {earthAgeYears} years old on Earth and {earthAgeYears/5} years old on Psyche.</p>
-            <p>You are {setAgeInDays()} days old on Earth and {earthAgeYears*1828} days old on Psyche.</p>
+            {/* <p>You are {earthAgeYears} years old on Earth and {earthAgeYears/5} years old on Psyche.</p>
+            <p>You are {setAgeInDays()} days old on Earth and {earthAgeYears*1828} days old on Psyche.</p> */}
+
+            <table>
+                <tr>
+                    <td class="blank"></td>
+                    <th>
+                        Earth
+                    </th>
+                    <th>
+                        Psyche
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Years
+                    </th>
+                    <td>
+                        {earthAgeYears}
+                    </td>
+                    <td>
+                        {earthAgeYears/5}
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Days
+                    </th>
+                    <td>
+                        {setAgeInDays()}
+                    </td>
+                    <td>
+                        {earthAgeYears*1828}
+                    </td>
+                </tr>
+            </table>
             
         </div>
     );
