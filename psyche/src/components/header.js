@@ -1,4 +1,4 @@
-// Authors: Jackson Westover & 
+// Authors: Jackson Westover & Brodie Busby
 // Basic Header component for Layout
 
 import React from "react";

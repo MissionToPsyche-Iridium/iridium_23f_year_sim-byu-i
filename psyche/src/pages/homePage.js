@@ -1,3 +1,5 @@
+// Authors: Brodie Busby &
+// Everything that displays on the home page
 import React from 'react';
 import "../index.css";
 import { Link } from "react-router-dom";

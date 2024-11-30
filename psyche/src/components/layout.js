@@ -1,3 +1,4 @@
+// Authors: Brodie Busby
 // Layout allows the app to have consistent styling over multiple pages for Header and Footer
 
 import React from "react";

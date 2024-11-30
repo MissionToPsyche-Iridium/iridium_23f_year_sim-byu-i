@@ -1,3 +1,5 @@
+// Authors: Brodie Busby, Carter Bosen, Thomas Jamieson
+// All Routes for the project
 import './App.css';
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';

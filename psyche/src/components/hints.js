@@ -1,3 +1,6 @@
+// Authors: Brodie Busby
+// Component for Hint Box on Draw Page
+
 import React, { useState } from "react";
 import Tooltip from '@mui/material/Tooltip';
 import "../index.css"

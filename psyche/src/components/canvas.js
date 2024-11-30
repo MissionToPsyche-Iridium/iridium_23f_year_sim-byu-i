@@ -1,3 +1,4 @@
+// Authors: Carter Bosen & Brodie Busby
 // All Tools and Canvas Functions for Draw Page
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
