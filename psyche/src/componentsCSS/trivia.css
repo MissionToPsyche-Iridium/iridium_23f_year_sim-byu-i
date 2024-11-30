@@ -6,6 +6,12 @@
 
 }
 
+.agePlacement {
+    margin: 20px;
+    padding: 20px;
+    border-bottom: 2px solid black;
+}
+
 a.sup {
     text-decoration: none;
     color: blue;
@@ -15,4 +21,30 @@ a.sup {
 a:hover.sup {
     color: rgb(255, 94, 0);
     
+}
+
+select {
+    margin-right: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    margin: 1px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 30px;
+    
+}
+
+tr, th, td {
+    border: 2px solid black;
+    padding: 5px;
+    
+}
+
+td.blank {
+    border: none;
 }
