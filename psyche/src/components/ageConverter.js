@@ -9,10 +9,9 @@
 *               regarding the Psyche project. Other general code help was given by various sources such
 *               as W3Schools.com
 *
-* Known issues: Users can input an age that is in the future. Error handling has not been added.
-*
-*
-*
+* Known issues: Users can input an age that is in the future. Error handling has not been added. NUmbers will change
+*               the submit button is pressed and they change the months days or years. If it is the year that is changed than 
+*               the numbers will be wrong.
 *
 */
 
@@ -93,7 +92,12 @@ function AgeConverter() {
         }
 
         //numOfLeaps calculates the number of leap days that have passed, you need the current day so that you don't miss the days that have past in the month already, then we need to account for the day the person was born so we subtract that from the current months day but we also need to subtract on from the selected day because we are counting the day you were born as day number 1, then we add the calculated number of days from the months that had past.
-        const daysOld = earthAgeYears * 365 + numOfLeaps() + currentDay - (selectedDay - 1) + days; 
+        let daysOld = earthAgeYears * 365 + numOfLeaps() + currentDay - (selectedDay - 1) + days; 
+
+        // in the very odd case that someone selects the current month day and year this will set the age to 0. If you want to be more exact than this you would have to get exact times, down to the hour at least, of birth and compare it to the current time. I believe that this would be way over the top.
+        if (currentDay === Number(selectedDay) && currentMonth === Number(selectedMonth) && currentYear === Number(selectedYear)){
+            daysOld = 0;
+        }
 
         return (daysOld)
     }
@@ -121,7 +125,7 @@ function AgeConverter() {
             
         }
 
-        //This account for if the current year is a leap year and the day has past or it is the 29th.
+        //This accounts for if the current year is a leap year and the day has past or it is the 29th.
         if ((leapYear(currentYear) === 29 && Number(selectedMonth) > 2) || (leapYear(currentYear) === 29 && Number(selectedMonth) === 2 && Number(selectedDay) === 29)) {
             numDays += 1;
         }
@@ -178,12 +182,11 @@ function AgeConverter() {
 
             <button onClick={setAge}>Submit</button>
 
-            {/* Ideally these would show up only after the Submit button has been clicked. Right now this will work as a proof of concept. */}
-            {/* <p>You are {earthAgeYears} years old on Earth and {earthAgeYears/5} years old on Psyche.</p>
-            <p>You are {setAgeInDays()} days old on Earth and {earthAgeYears*1828} days old on Psyche.</p> */}
-
+            
+            {/* Table to display the age on Earth and on Psyche. */}
             <table>
                 <tr>
+                    {/* There is no built in punnet square but I wanted a blank spot in the top right so I added some stylizing to make a td border blank. This allowed for the space to be there without it being visible. */}
                     <td class="blank"></td>
                     <th>
                         Earth
@@ -194,25 +197,28 @@ function AgeConverter() {
                 </tr>
                 <tr>
                     <th>
-                        Years
+                        Years Old
                     </th>
                     <td>
+                        {/* The way I got this number it doesn't display anything by default in the table. This is how I should have gotten the age in days as well, but I didn't. That is something to work on in the future I guess. You will see in a future comment that it caused some headache not to have done it in the same way. */}
                         {earthAgeYears}
+                        
                     </td>
                     <td>
-                        {earthAgeYears/5}
-                        
+                        {/* If the year 2024 is selected then we want to just get the days. earthAgeYears/5 is by default a 0 and would display without any input from the user. I don't want this so I did a conditional so a blank will be put in instead. */}
+                        {selectedYear === '2024' ? earthAgeYears : earthAgeYears/5 === 0 ? <p></p> : earthAgeYears/5}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        Days
+                        Days Old
                     </th>
                     <td>
-                        {setAgeInDays()}
+                        {/* earthAgeYears/5 is my condition for this rather than something with setAgeInDays() because setAgeInDays changes as you make selections. This means that the days on earth will change as you make selections if it was in the condition. In all reality the information should probably be different so that you only see the change when the submit button is pressed, but I did not do it right to get that working. The error with this is that after you have hit the submit button the condition will no longer be true and so if you change the month or year it will visibly change the number in the table. */}
+                        {selectedYear === '2024' ? setAgeInDays() : earthAgeYears/5 === 0 ? <p></p> : setAgeInDays().toLocaleString()}
                     </td>
                     <td>
-                        {earthAgeYears*1828}
+                        {selectedYear === '2024' ? Math.round((setAgeInDays()/365)*1828).toLocaleString() : earthAgeYears*1828 === 0 ? <p></p> : (earthAgeYears*1828 + setAgeInDays()).toLocaleString()}
                     </td>
                 </tr>
             </table>
