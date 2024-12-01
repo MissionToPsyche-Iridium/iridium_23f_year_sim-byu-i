@@ -52,20 +52,69 @@ function PreviewPage() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          gap: '20px',
+        }}
+      >
         {/* User's Image */}
-        <div style={{ flex: 1, textAlign: 'center' }}>
-          <h1>Your Drawing</h1>
+        <div
+          style={{
+            flex: 1,
+            width: '400px',
+            height: '550px', // Adjust for label and image space
+            textAlign: 'center',
+            border: '1px solid black',
+            position: 'relative', // Enable positioning for the label
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '10px',
+          }}
+        >
+          <h1
+            style={{
+              margin: 0,
+              fontSize: '18px',
+              marginBottom: '10px', // Space between label and image
+            }}
+          >
+            Your Drawing
+          </h1>
           <img
             src={imageData}
             alt="Preview of your drawing"
-            style={{ border: '1px solid black', maxWidth: '100%', maxHeight: '100%', objectFit: 'fill' }}
+            style={{
+              width: '100%',
+              height: '95%',
+              objectFit: 'contain', // Ensures scaling without overflow
+              
+            }}
           />
         </div>
 
         {/* ImageScroller */}
-        <div style={{ flex: 1 }}>
-          <ImageScroller />
+        <div
+          style={{
+            flex: 1,
+            border: '1px solid black',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <ImageScroller
+            style={{
+              width: 'auto', // Allow the image to take its natural width
+              height: 'auto', // Allow the image to take its natural height
+              maxWidth: '100%', // Prevent it from overflowing horizontally
+              maxHeight: '100%', // Prevent it from overflowing vertically
+            }}
+          />
         </div>
       </div>
 
@@ -73,7 +122,13 @@ function PreviewPage() {
       <div style={{ textAlign: 'center', marginTop: '20px' }}>
         <button
           onClick={downloadOverlayedImage}
-          style={{ padding: '10px', background: 'blue', color: 'white', border: 'none', cursor: 'pointer' }}
+          style={{
+            padding: '10px',
+            background: 'blue',
+            color: 'white',
+            border: 'none',
+            cursor: 'pointer',
+          }}
         >
           Download Your Drawing
         </button>
