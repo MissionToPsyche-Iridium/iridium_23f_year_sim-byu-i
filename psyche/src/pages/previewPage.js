@@ -59,7 +59,7 @@ function PreviewPage() {
           <img
             src={imageData}
             alt="Preview of your drawing"
-            style={{ border: '1px solid black', maxWidth: '125%', maxHeight: '90%', objectFit: 'contain' }}
+            style={{ border: '1px solid black', maxWidth: '100%', maxHeight: '100%', objectFit: 'fill' }}
           />
         </div>
 
