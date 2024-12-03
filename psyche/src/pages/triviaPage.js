@@ -22,13 +22,16 @@ import AgeConverter from "../components/ageConverter";
 import FunFacts from "../components/funFacts";
 import PsycheCost from "../components/psycheCost";
 import WeightConverter from "../components/weightConverter.js";
+import styles from "../componentsCSS/trivia.css";
 
 const TriviaPage = () => (
   <div>
 
     {/* All the components */}
-    <AgeConverter />
-    <WeightConverter />
+    <div className="container">
+      <AgeConverter />
+      <WeightConverter />
+    </div>
     <br></br>
     <br></br>
     <FunFacts />
