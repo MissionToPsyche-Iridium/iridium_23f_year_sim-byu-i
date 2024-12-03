@@ -7,7 +7,7 @@ const Footer = () => (
     <h3><strong>PSYCHE / </strong> 
       JOURNEY TO A METAL WORLD
     </h3>
-    <a href="/Credits">In collaboration with NASA and ASU</a>
+    <a className='cLink' href="/Credits">In collaboration with NASA and ASU</a>
   </footer>
 )
 

@@ -1,4 +1,5 @@
 /* CSS for trivia page */
+/* Authors: Jackson Westover & Thomas */
 
 .box {
     background-color: #BCB8BF;
@@ -49,4 +50,20 @@ tr, th, td {
 
 td.blank {
     border: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* align-items: center; */
+    gap: 20px;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
