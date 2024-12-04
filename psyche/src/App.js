@@ -17,7 +17,7 @@ function App() {
   const [submittedImage, setSubmittedImage] = useState(null); // State to hold the submitted image
 
   return (
-    <Router>
+    <Router basename="/iridium_23f_year_sim-byu-i" >
       <Layout>
         <Routes>
           <Route path='/' element={<HomePage />} />
