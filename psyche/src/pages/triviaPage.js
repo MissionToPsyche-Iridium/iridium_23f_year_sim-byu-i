@@ -9,8 +9,7 @@
 * Attributions: Set up was gotten from looking at examples from other pages in this project.
 *               
 *               
-* Known issues: Fun facts doesn't actually have anything yet. This could be added to later if desired.
-*
+* 
 *
 *
 *
@@ -19,7 +18,6 @@
 import React from "react";
 
 import AgeConverter from "../components/ageConverter";
-import FunFacts from "../components/funFacts";
 import PsycheCost from "../components/psycheCost";
 import WeightConverter from "../components/weightConverter.js";
 import styles from "../componentsCSS/trivia.css";
@@ -33,9 +31,8 @@ const TriviaPage = () => (
       <WeightConverter />
     </div>
     <br></br>
-    <br></br>
-    <FunFacts />
-    <br></br>
+    <p>Fun Facts</p>    
+
     <PsycheCost />
 
   </div>

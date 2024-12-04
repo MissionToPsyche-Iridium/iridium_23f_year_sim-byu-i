@@ -23,10 +23,16 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
+
+
 function PsycheCost() {
+
     return (
      
+       
         <div class="box">
+
+            
 
             {/* I wanted all of my accordions to be in one accordion sorta like a nesting doll because I thought it worked better aesthetically. That is why there is this first accordion encapsulating the others.*/}
             <Accordion>
