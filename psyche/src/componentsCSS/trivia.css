@@ -9,6 +9,14 @@
 
 }
 
+a.sourcesPage{
+    color: black;
+}
+p.sourcesPage{
+    text-align: left;
+    font-size: 20px;
+}
+
 .agePlacement {
     margin: 20px;
     padding: 20px;
