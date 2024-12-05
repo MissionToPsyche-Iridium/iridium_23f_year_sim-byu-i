@@ -20,7 +20,7 @@
   "homepage": "https://missiontopsyche-iridium.github.io/iridium_23f_year_sim-byu-i",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages-final -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
