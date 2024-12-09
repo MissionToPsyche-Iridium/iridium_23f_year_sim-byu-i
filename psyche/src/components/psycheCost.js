@@ -48,7 +48,7 @@ function PsycheCost() {
 
                 {/* It may seem obvious, but this is where the description of hte accordion goes. You will see that I use a link on a superscript here. That is to give the users the links to where I got the information. I made a special class in the trivia.css file because the default look for a hyperlink didn't work for a superscript. */}
                 <AccordionDetails>
-                    Psyche is estimated to be worth, on the low end of estimates, $10,000 quadrillion <Link className="sup" to="/Sources" ><sup>t_1</sup></Link>. Lets look what we could buy for that amount of money to try to understand how massive it is! Also just as a disclaimer all of these values are just estimates. This is purely a fun exercise and is not meant to be a source of concrete answers, especially when you get down to the last few items in the list. You can have some fun with this as well just pull out a calculator and look up what an item is worth and take 10,000 quadrillion divided by that cost.
+                    Just for fun, Psyche is estimated to be worth $10,000 quadrillion <Link className="sup" to="/Sources" ><sup>t_1</sup></Link>. Lets look what we could buy for that amount of money to try to understand how big that number is! Also just as a disclaimer all of these values are just estimates. This is purely a fun exercise and is not meant to be a source of concrete answers, especially when you get down to the last few items in the list. You can have some fun with this as well - just pull out a calculator and look up what an item is worth and take 10,000 quadrillion divided by that cost.
 
                 </AccordionDetails>
                 
@@ -97,7 +97,8 @@ function PsycheCost() {
                     </AccordionSummary>
 
                     <AccordionDetails>
-                        This is going to be a very rough estimate, but lets go for it. According to an article written back in 2022 <Link className="sup" to="/Sources" ><sup>t_4</sup></Link> one acre of land in United States is on average $12,000. With there being about 2.26 billion acres <Link className="sup" to="/Sources" ><sup>t_5</sup></Link> making up United States; we would be able to buy the entirety of United States, according to these numbers, 368,732 times. Yes that is more times than we would be able to pay off the national debt. I didn't expect it either. Lets go bigger.
+
+                        This is going to be a very rough estimate, but lets go for it. According to an article written back in 2022 <Link className="sup" to="/Sources" ><sup>t_3</sup></Link> one acre of land in the United States is on average $12,000. With there being about 2.26 billion acres <Link className="sup" to="/Sources" ><sup>t_4</sup></Link> making up the United States, we would be able to buy the entirety of the United States, according to these numbers, 368,732 times. Lets go bigger!
                     </AccordionDetails>
 
                 </Accordion>
@@ -109,7 +110,7 @@ function PsycheCost() {
                     </AccordionSummary>
 
                     <AccordionDetails>
-                        One source <Link className="sup" to="/Sources" ><sup>t_6</sup></Link> says Earth is estimated to be worth about $33 quadrillion. Doing some math we see that we could buy 303 Earths. That however was one of the biggest prices for Earth many other sources say it is $5 quadrillion which would mean we could buy 2,000 Earths.
+                        One source <Link className="sup" to="/Sources" ><sup>t_5</sup></Link> says Earth is estimated to be worth about $33 quadrillion. Doing some math, we see that we could buy 303 Earths. That, however, was one of the largest prices for Earth; many other sources say it is $5 quadrillion, which would mean we could buy 2,000 Earths.
                     </AccordionDetails>
 
                 </Accordion>
