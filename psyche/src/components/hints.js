@@ -8,8 +8,7 @@ const hints = [
   "Psyche is a mixture of rock and metal, with the metal taking up about 30-60% of its composition.",
   "Psyche is shaped like an irregular and lumpy potato.",
   "Psyche is about 173 miles (280 kilometers) at its widest point.",
-  "Psyche has two depressions or craters on it that are about 67 km wide.",
-  "Psyche is most likely relatively smooth."
+  "Psyche has two depressions or craters on it that are about 67 km wide."
 ];
 const HintBox = () => {
   const [hintNumber, setHintNumber] = useState(0);

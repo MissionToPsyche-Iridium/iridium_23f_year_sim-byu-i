@@ -72,12 +72,12 @@ function PsycheCost() {
                     </AccordionSummary>
 
                     <AccordionDetails>
-                        If you try really hard you can get gaming laptops for the 'low' price of $10,000. That would be 1,000,000,000,000,000 laptops. Although that may be a gamers dream I'm still not satisfied. We have to go bigger.
+                        If you try really hard you can get gaming laptops for $10,000. That would be 1,000,000,000,000,000 laptops. Although that may be a gamer's dream, I'm still not satisfied. We have to go bigger!
                     </AccordionDetails>
 
                 </Accordion>
 
-                <Accordion>
+                {/* <Accordion>
                     <AccordionSummary expandIcon={<ArrowDropDownIcon/>}>
                         US National Debt
 
@@ -87,17 +87,17 @@ function PsycheCost() {
                         Without getting political it is well agreed that the US Nation Debt is very large. As of writing this we are looking at roughly $36 trillion <Link className="sup" to="/Sources" ><sup>t_3</sup></Link>. So how many times could we pay off this debt if we somehow sold the Psyche asteroid? 277,778 times. Well that number is a more comprehensible, but still to big for me. Lets go bigger!
                     </AccordionDetails>
 
-                </Accordion>
+                </Accordion> */}
 
 
                 <Accordion>
                     <AccordionSummary expandIcon={<ArrowDropDownIcon/>}>
-                        America
+                        United States
 
                     </AccordionSummary>
 
                     <AccordionDetails>
-                        This is going to be a very rough estimate, but lets go for it. According to an article written back in 2022 <Link className="sup" to="/Sources" ><sup>t_4</sup></Link> one acre of land in America is on average $12,000. With there being about 2.26 billion acres <Link className="sup" to="/Sources" ><sup>t_5</sup></Link> making up America; we would be able to buy the entirety of America, according to these numbers, 368,732 times. Yes that is more times than we would be able to pay off the national debt. I didn't expect it either. Lets go bigger.
+                        This is going to be a very rough estimate, but lets go for it. According to an article written back in 2022 <Link className="sup" to="/Sources" ><sup>t_4</sup></Link> one acre of land in United States is on average $12,000. With there being about 2.26 billion acres <Link className="sup" to="/Sources" ><sup>t_5</sup></Link> making up United States; we would be able to buy the entirety of United States, according to these numbers, 368,732 times. Yes that is more times than we would be able to pay off the national debt. I didn't expect it either. Lets go bigger.
                     </AccordionDetails>
 
                 </Accordion>
