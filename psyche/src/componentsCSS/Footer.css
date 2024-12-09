@@ -20,6 +20,11 @@ footer {
   width: 100%;
 }
 
+.disclaimer{
+  line-height: normal;
+  font-weight: 200;
+}
+
 strong {
   font-weight: 500;
 }
