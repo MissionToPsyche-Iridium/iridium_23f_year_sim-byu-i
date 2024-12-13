@@ -6,7 +6,7 @@ V 1.0
 ---
 
 ## Installation Instructions
-[Installation guide]()
+[Installation guide](install_guide.md)
 
 ---
 
