@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders the homepage with the Psyche heading', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  // Look for the heading in the HomePage component
+  const headingElement = screen.getByText(/What is Psyche\?/i);
+  expect(headingElement).toBeInTheDocument();
 });

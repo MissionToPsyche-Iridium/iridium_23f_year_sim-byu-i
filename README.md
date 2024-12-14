@@ -6,14 +6,20 @@ To help with the passing of this project here is a comprehensive guide of what y
 
 ### Languages and Libraries
 
-- nodeJS v20.13.1
-- npm v10.5.2
+- Node.js v20.13.1 (JavaScript runtime environment)
+- npm v10.5.2 (Node.js package manager)
 - React.js: Frontend library for building user interfaces.
 - React Testing Library: Used for testing React components (included but not yet configured).
 
 ## Testing Scaffolding
 
-Tests were not setup or worked on yet but, to add tests use psyche/src/App.test.js which is the default testing file as well psyche/src/setupTests.js
+Tests have not been implemented yet. However, the project includes initial setup for testing:
+
+- Use psyche/src/App.test.js as the default test file for component testing.
+
+- Additional configurations can be added in psyche/src/setupTests.js.
+
+- npm test to run tests once implemented
 
 ## References
  
