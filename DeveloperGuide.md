@@ -1,12 +1,29 @@
+# Software Developer's Guide
+
+To help with the passing of this project here is a comprehensive guide of what you will need to work on this project.
+
+## Tools:
+
+### Languages
+
+## Configuration
+
+## Testing Scaffolding
+
+## References
+
+# Installation Guide
+
+This video will help you get the project running on your local machine.
+
+[Install Guide](https://youtu.be/mT9UwNDnyDo)
+
+
 # Version Description Document
 
 ## Version/Release Number
 V 1.0
 
----
-
-## Installation Instructions
-[Installation guide](install_guide.md)
 
 ---
 
@@ -52,6 +69,7 @@ V 1.0
 
 - **Erase Tool:** [Issue with erase tool not actually erasing drawing, but rather turning the area back to the color of the canvas. Can be seen when using fill tool over an area that was erased]
 
+- **Oval Tool:** [Issue with Oval tool as it currently does not show the size of the oval when holding doen the mouse. Only when the mouse is released does the oval appear on the screen ]
 ---
 
 ## Future Features
