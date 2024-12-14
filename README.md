@@ -4,15 +4,24 @@ To help with the passing of this project here is a comprehensive guide of what y
 
 ## Tools:
 
-### Languages
+### Languages and Libraries
 
-## Configuration
+- nodeJS v20.13.1
+- npm v10.5.2
+- React.js: Frontend library for building user interfaces.
+- React Testing Library: Used for testing React components (included but not yet configured).
 
 ## Testing Scaffolding
 
 Tests were not setup or worked on yet but, to add tests use psyche/src/App.test.js which is the default testing file as well psyche/src/setupTests.js
 
 ## References
+ 
+- [Design Document](documents\Psyche_Project_Design_Document.md)
+
+- [Psyche Research](documents\psyche_looks\looks_trivia.md)
+
+- Other various documents are in the documents folder which has images and inital designs for website
 
 # Installation Guide
 
