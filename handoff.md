@@ -16,4 +16,4 @@
 - [X] Do you have all of your code checked in?  
 - [ ] Are all the branches merged?  
 - [ ] Once merged, are only the necessary branches still available? (all other branches are deleted)  
-- [ ] Have you re-run all of the code to ensure it still works?  
+- [X] Have you re-run all of the code to ensure it still works?  
