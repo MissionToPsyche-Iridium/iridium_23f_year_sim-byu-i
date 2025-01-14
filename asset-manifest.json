@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/iridium_23f_year_sim-byu-i/static/css/main.e45352a0.css",
+    "main.js": "/iridium_23f_year_sim-byu-i/static/js/main.ae03ba7d.js",
+    "static/js/453.8c74d356.chunk.js": "/iridium_23f_year_sim-byu-i/static/js/453.8c74d356.chunk.js",
+    "static/media/John_wursten.jpg": "/iridium_23f_year_sim-byu-i/static/media/John_wursten.9213358d7fafadc2d6ed.jpg",
+    "static/media/MaryAnn and I.jpg": "/iridium_23f_year_sim-byu-i/static/media/MaryAnn and I.e7af89eebf05c738c045.jpg",
+    "static/media/PyscheSat.png": "/iridium_23f_year_sim-byu-i/static/media/PyscheSat.00cde4e50ac1858f2a06.png",
+    "static/media/CarterBosen.JPG": "/iridium_23f_year_sim-byu-i/static/media/CarterBosen.2344ca01295ccb31b68d.JPG",
+    "static/media/bryer_johnson.jpg": "/iridium_23f_year_sim-byu-i/static/media/bryer_johnson.9fa3a9fe587bc37a36a1.jpg",
+    "static/media/brodie_busby.jpg": "/iridium_23f_year_sim-byu-i/static/media/brodie_busby.aebce04ddfdd945e6eba.jpg",
+    "static/media/240206_JacksonWestover_01.jpg": "/iridium_23f_year_sim-byu-i/static/media/240206_JacksonWestover_01.3ba1ca738b14615840a9.jpg",
+    "index.html": "/iridium_23f_year_sim-byu-i/index.html",
+    "main.e45352a0.css.map": "/iridium_23f_year_sim-byu-i/static/css/main.e45352a0.css.map",
+    "main.ae03ba7d.js.map": "/iridium_23f_year_sim-byu-i/static/js/main.ae03ba7d.js.map",
+    "453.8c74d356.chunk.js.map": "/iridium_23f_year_sim-byu-i/static/js/453.8c74d356.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e45352a0.css",
+    "static/js/main.ae03ba7d.js"
+  ]
+}
